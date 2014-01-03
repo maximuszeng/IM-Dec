@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>{{title}}</title> {{> script}} {{> css}}
+<script src="/javascripts/signin.js"></script>
+
+<style>
+span.required {
+	color: RED;
+}
+</style>
+</head>
+<body>
+
+	<div class="navbar-wrapper">
+		<div class="container">
+			<div class="navbar navbar-inverse navbar-static-top"
+				role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">E-IM</a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="/">Home</a></li>
+							<li><a href="#about">About</a></li>
+							<li><a href="#contact">Contact</a></li>
+							<li><a href="/chatwidget" target="_blank">User</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="content">
+			<div class="row"></div>
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h4 class="panel-title">Sign in</h4>
+						</div>
+						<div class="panel-body">
+							<form method="post" id="signinForm" action="/login" role="form">
+								<fieldset>
+									<div class="form-group" id="nameFG">
+										<label for="name" class="control-label"> <span>Username
+												or Email</span></label> <input class="form-control" tabindex="1" id="name"
+											name="name" label="Name" type="text" value=""
+											placeholder="Username or Email">
+									</div>
+									<div class="form-group" id="passwordFG">
+										<label for="password" class="control-label"> <span>Password:</span>
+											<a href="#">Forget Password</a>
+										</label> <input class="form-control" tabindex="2" id="password"
+											name="password" label="password" type="password" value=""
+											placeholder="Password">
+									</div>
+									<input type="hidden" id="redirect"name="redirect" value="{{redirect}}">
+								</fieldset>
+							</form>
+						</div>
+						<div class="panel-footer">
+							<button id="signin" type="button" class="btn btn-primary "
+								role="button">Sign in</button>
+							<a id="signup" role="button" class="btn btn-primary "
+								role="button" href="/signup">Sign up</a>
+							<span id="signinResult"></span>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal hide" id="pleaseWaitDialog" data-backdrop="static"
+		data-keyboard="false">
+		<div class="modal-header">
+			<h1>Processing...</h1>
+		</div>
+		<div class="modal-body">
+			<div class="progress progress-striped active">
+				<div class="bar" style="width: 100%;"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container marketing">
+		<hr class="featurette-divider">
+
+		<footer>
+			<p>
+				&copy; 2013 E-IM Company, Inc. &middot; <a href="#">Privacy</a>
+				&middot; <a href="#">Terms</a>
+			</p>
+		</footer>
+
+	</div>
+	<!-- /.container -->
+</body>
+</html>

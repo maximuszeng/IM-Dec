@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eim.persist.mapper.base.ApplicationMapper">
+
+	<cache />
+
+	<resultMap id="applicationResultMap" type="ApplicationPO">
+		<result property="appId" column="APP_ID" />
+		<result property="uid" column="UID" />
+		<result property="name" column="NAME" />
+		<result property="industryCategory" column="INDUSTRY_CATEGORY" />
+		<result property="domain" column="DOMAIN" />
+		<result property="appType" column="APP_TYPE"
+			typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+		<result property="logoUrl" column="LOGO_URL" />
+		<result property="welcomeMessage" column="WELCOME_MESSAGE" />
+		<result property="appKey" column="APP_KEY" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="lastUpdateTime" column="LAST_UPDATE_TIME" />
+	</resultMap>
+
+	<select id="load" parameterType="long" resultMap="applicationResultMap">
+		SELECT * FROM BASE_APPLICATION T WHERE T.APP_ID = #{appId}
+	</select>
+	
+	<select id="loadByDomain" parameterType="long" resultMap="applicationResultMap">
+		SELECT * FROM BASE_APPLICATION T WHERE T.DOMAIN = #{domain}
+	</select>
+
+	<select id="loadIDsByUID" parameterType="long" resultType="long">
+		SELECT T.APP_ID FROM BASE_APPLICATION T WHERE T.UID = #{uid}
+	</select>
+
+	<select id="loadByUID" parameterType="long" resultMap="applicationResultMap">
+		SELECT * FROM BASE_APPLICATION T WHERE T.UID = #{uid}
+	</select>
+
+	<select id="loadAll" resultMap="applicationResultMap">
+		SELECT * FROM BASE_APPLICATION T
+	</select>
+
+	<update id="update" parameterType="ApplicationPO">
+		UPDATE BASE_APPLICATION SET
+		UID =
+		#{uid},
+		DOMAIN = #{domain},
+		APP_TYPE = #{appType.id},
+		LOGO_URL = #{logoUrl},
+		WELCOME_MESSAGE = #{welcomeMessage},
+		APP_KEY = #{appKey},
+		LAST_UPDATE_TIME = #{lastUpdateTime},
+		NAME = #{name},
+		INDUSTRY_CATEGORY
+		= #{industryCategory}
+		WHERE APP_ID = #{appId}
+	</update>
+
+	<insert id="insert" parameterType="ApplicationPO">
+		INSERT INTO BASE_APPLICATION
+		(APP_ID, UID, DOMAIN, NAME, INDUSTRY_CATEGORY, APP_TYPE, LOGO_URL,
+		WELCOME_MESSAGE,
+		APP_KEY,CREATE_TIME,LAST_UPDATE_TIME) VALUES
+		(#{appId}, #{uid},
+		#{domain}, #{name}, #{industryCategory}, #{appType.id},
+		#{logoUrl},
+		#{welcomeMessage}, #{appKey},
+		#{createTime},
+		#{lastUpdateTime})
+	</insert>
+
+	<delete id="delete" parameterType="Long">
+		DELETE FROM BASE_APPLICATION WHERE
+		APP_ID=#{appId}
+	</delete>
+
+	<delete id="deleteByUID" parameterType="Long">
+		DELETE FROM BASE_APPLICATION
+		WHERE
+		UID=#{uid}
+	</delete>
+
+	<insert id="batchInsert" parameterType="ApplicationPO">
+		INSERT INTO BASE_APPLICATION (APP_ID, UID, DOMAIN, NAME, INDUSTRY_CATEGORY,
+		APP_TYPE, LOGO_URL,
+		WELCOME_MESSAGE,
+		APP_KEY,CREATE_TIME,LAST_UPDATE_TIME) VALUES
+		<foreach collection="entities" item="item" index="index"
+			separator=",">
+			(#{item.appId}, #{item.uid}, #{item.domain},#{item.name},
+			#{item.industryCategory},
+			#{item.appType.id}, #{item.logoUrl},
+			#{item.welcomeMessage},
+			#{item.appKey},
+			#{item.createTime},
+			#{item.lastUpdateTime})
+		</foreach>
+	</insert>
+
+</mapper>

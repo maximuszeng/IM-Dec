@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eim.persist.mapper.base.UserMapper">
+
+	<cache />
+
+	<resultMap id="userResultMap" type="UserPO">
+		<result property="uid" column="UID" />
+		<result property="name" column="NAME" />
+		<result property="userType" column="USER_TYPE"
+			typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+		<result property="staffLimited" column="STAFF_LIMITED" />
+		<result property="staffUsed" column="STAFF_USED" />
+		<result property="createDate" column="CREATE_DATE" />
+		<result property="logoUrl" column="LOGO_URL" />
+		<result property="serviceMode" column="SERVICE_MODE"
+			typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+		<result property="serviceConcurrentLimited" column="SERVICE_CONCURRENT_LIMITED" />
+	</resultMap>
+
+	<select id="load" parameterType="long" resultMap="userResultMap">
+		SELECT * FROM BASE_USER T WHERE T.UID = #{uid}
+	</select>
+
+	<select id="loadAll" resultMap="userResultMap">
+		SELECT * FROM BASE_USER T
+	</select>
+
+	<update id="update" parameterType="UserPO">
+		UPDATE BASE_USER SET
+		NAME = #{name},
+		USER_TYPE = #{userType.id},
+		STAFF_LIMITED = #{staffLimited},
+		STAFF_USED =
+		#{staffUsed},
+		CREATE_DATE = #{createDate},
+		LOGO_URL = #{logoUrl},
+		SERVICE_MODE = #{serviceMode.id},
+		SERVICE_CONCURRENT_LIMITED =
+		#{serviceConcurrentLimited}
+		WHERE UID = #{uid}
+	</update>
+	
+	<update id="updateStaffUsedAfterNewStaffCreated" parameterType="long">
+		UPDATE BASE_USER SET STAFF_USED = STAFF_USED + 1 WHERE UID = #{uid}
+	</update>
+	
+	<update id="updateStaffUsedAfterNewStaffDeleted" parameterType="long">
+		UPDATE BASE_USER SET STAFF_USED = STAFF_USED - 1 WHERE UID = #{uid}
+	</update>
+
+	<update id="updateStaffUsedToZero" parameterType="long">
+		UPDATE BASE_USER SET STAFF_USED = 0 WHERE UID = #{uid}
+	</update>
+
+	<insert id="insert" parameterType="UserPO">
+		INSERT INTO BASE_USER (UID, NAME,
+		USER_TYPE, STAFF_LIMITED, STAFF_USED,
+		CREATE_DATE, LOGO_URL,
+		SERVICE_MODE, SERVICE_CONCURRENT_LIMITED)
+		VALUES
+		(#{uid}, #{name},
+		#{userType.id}, #{staffLimited}, #{staffUsed}, #{createDate},
+		#{logoUrl},#{serviceMode.id}, #{serviceConcurrentLimited})
+	</insert>
+
+	<delete id="delete" parameterType="Long">
+		DELETE FROM BASE_USER WHERE
+		UID=#{uid}
+	</delete>
+
+	<insert id="batchInsert" parameterType="List">
+		INSERT INTO BASE_USER
+		(UID, NAME, USER_TYPE, STAFF_LIMITED, STAFF_USED,
+		CREATE_DATE, LOGO_URL, SERVICE_MODE, SERVICE_CONCURRENT_LIMITED)
+		VALUES
+		<foreach collection="entities" item="item" index="index"
+			separator=",">
+			(#{item.uid}, #{item.name}, #{item.userType.id},
+			#{item.staffLimited}, #{item.staffUsed}, #{item.createDate},
+			#{item.logoUrl},#{item.serviceMode.id},
+			#{item.serviceConcurrentLimited})
+		</foreach>
+	</insert>
+
+</mapper>

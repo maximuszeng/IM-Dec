@@ -1,0 +1,6 @@
+1. Common command
+   bower search morris
+   
+   bower install morris --save
+   
+   bower list --path

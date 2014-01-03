@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eim.persist.mapper.tag.TagCategoryMapper">
+
+	<cache />
+	
+	<resultMap id="tagCategoryResultMap" type="TagCategoryPO">
+		<result property="id" column="CATEGORY_ID" />
+		<result property="name" column="CATEGORY_NAME" />
+		<result property="desc" column="CATEGORY_DESC" />
+		<result property="locale" column="LOCALE"
+			typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+	</resultMap>
+
+	<select id="load" parameterType="long" resultMap="tagCategoryResultMap">
+		SELECT * FROM TAG_TAG_CATEGORY T WHERE T.CATEGORY_ID = #{id}
+	</select>
+
+	<select id="loadAll" resultMap="tagCategoryResultMap">
+		SELECT * FROM TAG_TAG_CATEGORY T
+	</select>
+
+	<update id="update" parameterType="TagCategoryPO">
+		UPDATE TAG_TAG_CATEGORY SET
+		CATEGORY_NAME = #{name},
+		CATEGORY_DESC = #{desc},
+		LOCALE = #{locale.id}
+		WHERE CATEGORY_ID = #{id}
+	</update>
+
+	<insert id="insert" parameterType="TagCategoryPO">
+		INSERT INTO TAG_TAG_CATEGORY (CATEGORY_ID, CATEGORY_NAME, CATEGORY_DESC, LOCALE)
+		VALUES (#{id}, #{name}, #{desc},  #{locale.id})
+	</insert>
+
+	<delete id="delete" parameterType="Long">
+		DELETE FROM TAG_TAG_CATEGORY WHERE CATEGORY_ID=#{id}
+	</delete>
+
+	<insert id="batchInsert" parameterType="List">
+		INSERT INTO TAG_TAG_CATEGORY (CATEGORY_ID, CATEGORY_NAME, CATEGORY_DESC, LOCALE) VALUES
+		<foreach collection="entities" item="item" index="index"
+			separator=",">
+			(#{item.id}, #{item.name}, #{item.desc}, #{item.locale.id})
+		</foreach>
+	</insert>
+
+</mapper>

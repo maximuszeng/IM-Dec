@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"> <!--<![endif]-->
+<head>
+    <title>{{title}}</title>
+	{{> css}}
+	{{> customcss}}
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.4/select2.css" type="text/css" />
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.4/select2-bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css" type="text/css" />
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.4.3/morris.css" type="text/css" />
+	
+	<link rel="stylesheet" href="http:/stylesheets/dashboard/blue.css" type="text/css" />
+	<link rel="stylesheet" href="http:/stylesheets/dashboard/App.css" type="text/css" />
+	<link rel="stylesheet" href="http:/stylesheets/dashboard/custom.css" type="text/css" />
+	
+	{{> script}} 
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.4/select2.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.4.3/morris.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/howler/1.1.11/howler.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
+	<script src="http:////cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+	
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.1/jquery.flot.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.1/jquery.flot.pie.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.1/jquery.flot.stack.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/flot/0.8.1/jquery.flot.resize.min.js"></script>
+	<script src="http:////cdnjs.cloudflare.com/ajax/libs/flot/0.8.1/jquery.flot.time.min.js"></script>
+	
+	<script src="/javascripts/jquery/jquery.icheck.min.js"></script>
+	<script src="/javascripts/jquery/jquery.tableCheckable.js"></script>
+	<script src="/javascripts/dashboard/App.js"></script>
+	
+	<script src="/javascripts/dashboard/charts/area.js"></script>
+	<script src="/javascripts/dashboard/charts/donut.js"></script>
+	
+	<script src="/javascripts/dashboard/calendar.js"></script>
+	<script src="/javascripts/dashboard/dashboard.js"></script>
+	{{> customscripts}} 
+	
+	<script>
+	$(document).ready(function() {
+		var path = location.pathname;
+		var pathHref = $("[href$='"+path+"']").parent().parent().parent();
+		$(".active").removeClass("active");
+		pathHref.addClass("active");
+	});
+	</script>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+	{{> header}}
+	
+	{{> topbar}} 
+
+	{{> sidebar}} 
+	
+	{{> content}}
+</div>
+
+	{{> footer}}
+
+</body>
+</html>

@@ -1,0 +1,476 @@
+<div id="content">
+
+	<div id="content-header">
+		<h1>Regular Elements</h1>
+	</div>
+	<!-- #content-header -->
+
+
+	<div id="content-container">
+
+		<div class="portlet">
+
+			<div class="portlet-header">
+
+				<h3>
+					<i class="fa fa-tasks"></i> Basic Inputs
+				</h3>
+
+			</div>
+			<!-- /.portlet-header -->
+
+			<div class="portlet-content">
+
+				<div class="row">
+
+					<div class="col-sm-4">
+
+						<div class="form-group">
+							<label for="text-input">Text input</label> <input type="text"
+								id="text-input" class="form-control">
+						</div>
+
+						<div class="form-group">
+							<label for="textarea-input">Textarea</label>
+							<textarea name="textarea-input" id="textarea-input" cols="10"
+								rows="3" class="form-control"></textarea>
+						</div>
+
+					</div>
+					<!-- /.col -->
+
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="select-input">Select</label> <select
+								id="select-input" class="form-control">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="select-multi-input">Select (multiple)</label> <select
+								multiple="multiple" id="select-multi-input" class="form-control">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+							</select>
+						</div>
+					</div>
+					<!-- /.col -->
+
+					<div class="col-sm-4 col-md-3 col-md-offset-1">
+						<label>Checkbox (stacked)</label>
+						<div class="checkbox">
+							<label> <input type="checkbox" value=""> Option 1
+							</label>
+						</div>
+						<div class="checkbox">
+							<label> <input type="checkbox" value=""> Option 2
+							</label>
+						</div>
+						<label>Radio (stacked)</label>
+						<div class="radio">
+							<label> <input type="radio" name="option-input"
+								id="option-input-1" value="option1" checked=""> Option 1
+							</label>
+						</div>
+						<div class="radio">
+							<label> <input type="radio" name="option-input"
+								id="option-input-2" value="option2"> Option 2
+							</label>
+						</div>
+					</div>
+
+				</div>
+				<!-- /.row -->
+
+				<div class="row">
+					<div class="col-sm-4">
+						<label>Checkbox (inline)</label>
+						<div class="form-group">
+							<label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox1" value="option1"> Option 1
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox2" value="option2"> Option 2
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								id="inlineCheckbox3" value="option3"> Option 3
+							</label>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<label>Radio (inline)</label>
+						<div class="form-group">
+							<label class="radio-inline"> <input type="radio"
+								name="inline_optionsRadios" id="inline_optionsRadios1"
+								value="option1"> Option 1
+							</label> <label class="radio-inline"> <input type="radio"
+								name="inline_optionsRadios" id="inline_optionsRadios2"
+								value="option2" checked=""> Option 2
+							</label> <label class="radio-inline"> <input type="radio"
+								name="inline_optionsRadios" id="inline_optionsRadios3"
+								value="option3"> Option 3
+							</label>
+						</div>
+					</div>
+				</div>
+				<!-- /.row -->
+
+
+			</div>
+			<!-- /.portlet-content -->
+
+		</div>
+		<!-- /.portlet -->
+
+		<div class="portlet">
+
+			<div class="portlet-header">
+
+				<h3>
+					<i class="fa fa-tasks"></i> Prepended & Appended
+				</h3>
+
+			</div>
+			<!-- /.portlet-header -->
+
+			<div class="portlet-content">
+
+				<div class="row">
+					<div class="col-sm-6">
+
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon">@</span> <input
+									class="form-control" id="prependedInput" type="text"
+									placeholder="Username">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<input class="form-control" id="appendedInput" type="text">
+								<span class="input-group-addon">.00</span>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon">$</span> <input
+									class="form-control" id="appendedPrependedInput" type="text">
+								<span class="input-group-addon">.00</span>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon"> <input type="checkbox">
+								</span> <input type="text" class="form-control">
+							</div>
+						</div>
+
+					</div>
+					<!-- /.col -->
+
+					<div class="col-sm-6">
+
+						<div class="form-group">
+							<div class="input-group">
+								<input class="form-control" id="appendedInputButton" type="text">
+								<span class="input-group-btn">
+									<button class="btn btn-secondary" type="button">Go!</button>
+								</span>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" id="appendedDropdownButton"
+									class="form-control">
+								<div class="input-group-btn">
+									<button data-toggle="dropdown"
+										class="btn btn-primary dropdown-toggle">
+										Action <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu pull-right">
+										<li><a href="javascript:;">Action</a></li>
+										<li><a href="javascript:;">Another action</a></li>
+										<li><a href="javascript:;">Something else here</a></li>
+										<li><a href="javascript:;">Separated link</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<input class="form-control" type="text">
+								<div class="input-group-btn">
+									<button type="button" class="btn btn-tertiary" tabindex="-1">Action</button>
+									<button type="button" class="btn btn-tertiary dropdown-toggle"
+										data-toggle="dropdown" tabindex="-1">
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu pull-right" role="menu">
+										<li><a href="javascript:;">Action</a></li>
+										<li><a href="javascript:;">Another action</a></li>
+										<li><a href="javascript:;">Something else here</a></li>
+										<li class="divider"></li>
+										<li><a href="javascript:;">Separated link</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control"> <span
+									class="input-group-addon"> <input type="radio">
+								</span>
+							</div>
+							<!-- /input-group -->
+						</div>
+
+					</div>
+					<!-- /.col -->
+
+				</div>
+				<!-- /.row -->
+
+			</div>
+			<!-- /.portlet-content -->
+
+		</div>
+		<!-- /.portlet -->
+
+
+
+		<div class="portlet">
+
+			<div class="portlet-header">
+
+				<h3>
+					<i class="fa fa-tasks"></i> Horizontal Layout
+				</h3>
+
+			</div>
+			<!-- /.portlet-header -->
+
+			<div class="portlet-content">
+
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label class="col-md-2">Full Width Input</label>
+
+						<div class="col-md-10">
+							<input type="text" class="form-control" placeholder="Full Width">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2">Large Width Input</label>
+
+						<div class="col-md-8">
+							<input type="text" class="form-control" placeholder="Large Width">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2">Medium Width Input</label>
+
+						<div class="col-md-5">
+							<input type="text" class="form-control"
+								placeholder="Medium Width">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2">Small Width Input</label>
+
+						<div class="col-md-2">
+							<input type="text" class="form-control" placeholder="Small Width">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2">Multiple Inputs</label>
+
+						<div class="col-md-10">
+							<div class="row">
+								<div class="col-md-4">
+									<input type="text" class="form-control">
+									<p class="help-block">Left aligned helper.</p>
+								</div>
+								<div class="col-md-4">
+									<input type="text" class="form-control">
+									<p class="help-block text-center">Center aligned helper.</p>
+								</div>
+								<div class="col-md-4">
+									<input type="text" class="form-control">
+									<p class="help-block text-right">Right aligned helper.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2">Checkbox (inline)</label>
+
+						<div class="col-md-10">
+							<label class="checkbox-inline"> <input type="checkbox">
+								Option 1
+							</label> <label class="checkbox-inline"> <input type="checkbox">
+								Option 2
+							</label> <label class="checkbox-inline"> <input type="checkbox">
+								Option 3
+							</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2">Radio (inline)</label>
+
+						<div class="col-md-10">
+							<label class="radio-inline"> <input type="radio"
+								name="radioset1"> Option 1
+							</label> <label class="radio-inline"> <input type="radio"
+								name="radioset1"> Option 2
+							</label> <label class="radio-inline"> <input type="radio"
+								name="radioset1"> Option 3
+							</label>
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+			<!-- /.portlet-content -->
+
+		</div>
+		<!-- /.portlet -->
+
+
+
+
+		<div class="portlet">
+
+			<div class="portlet-header">
+
+				<h3>
+					<i class="fa fa-tasks"></i> Form Grid
+				</h3>
+
+			</div>
+			<!-- /.portlet-header -->
+
+			<div class="portlet-content">
+
+
+				<div class="row">
+					<div class="col-sm-12">
+						<input type="text" placeholder=".col-sm-12" class="form-control">
+					</div>
+				</div>
+				<!-- /.row -->
+
+				<div class="row">
+					<div class="col-sm-5">
+						<input type="text" placeholder=".col-sm-5" class="form-control">
+					</div>
+					<div class="col-sm-3">
+						<input type="text" placeholder=".col-sm-3" class="form-control">
+					</div>
+					<div class="col-sm-4">
+						<input type="text" placeholder=".col-sm-4" class="form-control">
+					</div>
+				</div>
+				<!-- /.row -->
+
+				<div class="row">
+					<div class="col-sm-6">
+						<input type="text" placeholder=".col-sm-4" class="form-control">
+					</div>
+					<div class="col-sm-6">
+						<input type="text" placeholder=".col-sm-4" class="form-control">
+					</div>
+				</div>
+				<!-- /.row -->
+
+				<div class="row">
+					<div class="col-sm-2">
+						<input type="text" placeholder=".col-sm-2" class="form-control">
+					</div>
+					<div class="col-sm-2">
+						<input type="text" placeholder=".col-sm-2" class="form-control">
+					</div>
+					<div class="col-sm-2">
+						<input type="text" placeholder=".col-sm-2" class="form-control">
+					</div>
+					<div class="col-sm-2">
+						<input type="text" placeholder=".col-sm-2" class="form-control">
+					</div>
+					<div class="col-sm-2">
+						<input type="text" placeholder=".col-sm-2" class="form-control">
+					</div>
+					<div class="col-sm-2">
+						<input type="text" placeholder=".col-sm-2" class="form-control">
+					</div>
+				</div>
+				<!-- /.row -->
+
+
+			</div>
+			<!-- /.portlet-content -->
+
+		</div>
+		<!-- /.portlet -->
+
+
+
+		<div class="portlet">
+
+			<div class="portlet-header">
+
+				<h3>
+					<i class="fa fa-tasks"></i> Form Validation States
+				</h3>
+
+			</div>
+			<!-- /.portlet-header -->
+
+			<div class="portlet-content">
+
+				<div class="form-group has-success">
+					<label class="control-label" for="inputSuccess">Input with
+						success</label> <input type="text" class="form-control" id="inputSuccess">
+				</div>
+
+				<div class="form-group has-warning">
+					<label class="control-label" for="inputWarning">Input with
+						warning</label> <input type="text" class="form-control" id="inputWarning">
+				</div>
+
+				<div class="form-group has-error">
+					<label class="control-label" for="inputError">Input with
+						error</label> <input type="text" class="form-control" id="inputError">
+				</div>
+
+			</div>
+			<!-- /.portlet-content -->
+
+		</div>
+		<!-- /.portlet -->
+
+
+	</div>
+	<!-- /#content-container -->
+
+
+</div>
+<!-- #content -->

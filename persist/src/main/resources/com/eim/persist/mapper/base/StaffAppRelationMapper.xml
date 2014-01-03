@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eim.persist.mapper.base.StaffAppRelationMapper">
+
+    <cache />
+	
+    <select id="load" parameterType="long" resultType="StaffAppRelationPO">
+        SELECT * FROM BASE_STAFF_APP_RELATION T  WHERE T.APP_ID = #{appId} and T.SUID = #{suid}
+    </select>
+
+    <select id="loadByAppId" resultType="StaffAppRelationPO">
+        SELECT * FROM BASE_STAFF_APP_RELATION T WHERE T.APP_ID = #{appId}
+    </select>
+    
+    <select id="loadBySUID" resultType="StaffAppRelationPO">
+        SELECT * FROM BASE_STAFF_APP_RELATION T WHERE T.SUID = #{suid}
+    </select>
+
+    <insert id="insert" parameterType="StaffAppRelationPO">
+        INSERT INTO BASE_STAFF_APP_RELATION (APP_ID, SUID, CREATE_TIME) VALUES
+        (#{appId}, #{suid}, #{createTime})
+    </insert>
+    
+    <insert id="batchInsert" parameterType="StaffAppRelationPO">
+        INSERT INTO BASE_STAFF_APP_RELATION (APP_ID, SUID, CREATE_TIME) VALUES
+        <foreach collection="entities" item="item" index="index" separator=",">
+           (#{item.appId}, #{item.suid}, #{item.createTime})
+        </foreach>
+    </insert>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM BASE_STAFF_APP_RELATION WHERE APP_ID = #{appId} and SUID = #{suid}
+    </delete>
+    
+    <delete id="deleteByAppId" parameterType="Long">
+        DELETE FROM BASE_STAFF_APP_RELATION WHERE APP_ID = #{appId}
+    </delete>
+    
+    <delete id="deleteBySUID" parameterType="Long">
+        DELETE FROM BASE_STAFF_APP_RELATION WHERE SUID = #{suid}
+    </delete>
+
+</mapper>

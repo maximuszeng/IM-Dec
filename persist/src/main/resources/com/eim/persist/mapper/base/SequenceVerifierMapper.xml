@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eim.persist.mapper.base.SequenceVerifierMapper">
+
+	<cache />
+
+	<select id="getMaxAccessUser" resultType="java.util.Map">
+		SELECT APP_ID AS "id", MAX(AUID) AS "auid" FROM BASE_ACCESS_USER GROUP BY APP_ID
+	</select>
+
+	<select id="getMaxAppId" resultType="long">
+		SELECT max(APP_ID) FROM BASE_APPLICATION
+	</select>
+
+	<select id="getMaxSUID" resultType="long">
+		SELECT max(SUID) FROM BASE_STAFF
+	</select>
+
+	<select id="getMaxUID" resultType="long">
+		SELECT max(UID) FROM BASE_USER
+	</select>
+
+</mapper>

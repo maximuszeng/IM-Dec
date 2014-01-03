@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eim.persist.mapper.base.StaffMapper">
+
+	<cache />
+
+	<resultMap id="staffResultMap" type="StaffPO">
+		<result property="suid" column="SUID" />
+		<result property="userName" column="USER_NAME" />
+		<result property="password" column="PASSWORD" />
+		<result property="canServe" column="CAN_SERVE" />
+		<result property="email" column="EMAIL" />
+		<result property="lastActiveDate" column="LAST_ACTIVE_DATE" />
+		<result property="isAdmin" column="IS_ADMIN" />
+		<result property="uid" column="UID" />
+		<result property="createDate" column="CREATE_DATE" />
+		<result property="serviceMode" column="SERVICE_MODE"
+			typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+		<result property="serviceConcurrentLimited" column="SERVICE_CONCURRENT_LIMITED" />
+	</resultMap>
+
+	<select id="load" parameterType="long" resultMap="staffResultMap">
+		SELECT * FROM BASE_STAFF T WHERE T.SUID = #{suid}
+	</select>
+
+	<select id="loadAll" parameterType="long" resultMap="staffResultMap">
+		SELECT * FROM BASE_STAFF T
+	</select>
+
+	<select id="loadByUID" parameterType="long" resultMap="staffResultMap">
+		SELECT * FROM BASE_STAFF T WHERE T.UID = #{uid}
+	</select>
+
+	<select id="loadByUserName" parameterType="long" resultMap="staffResultMap">
+		SELECT * FROM BASE_STAFF T WHERE T.USER_NAME = #{userName}
+	</select>
+
+	<select id="loadByEmail" parameterType="long" resultMap="staffResultMap">
+		SELECT * FROM BASE_STAFF T WHERE T.EMAIL = #{email}
+	</select>
+
+	<select id="loadIDsByUID" parameterType="long" resultType="StaffPO">
+		SELECT
+		T.SUID
+		FROM BASE_STAFF T
+		WHERE T.UID = #{uid}
+	</select>
+
+	<update id="update" parameterType="StaffPO">
+		UPDATE BASE_STAFF SET USER_NAME = #{userName}, PASSWORD = #{password}, CAN_SERVE = #{canServe},
+		EMAIL = #{email}, LAST_ACTIVE_DATE = #{lastActiveDate},
+		IS_ADMIN = #{isAdmin}, SERVICE_MODE = #{serviceMode.id}, SERVICE_CONCURRENT_LIMITED = #{serviceConcurrentLimited}
+		WHERE SUID = #{suid}
+	</update>
+
+	<insert id="insert" parameterType="StaffPO">
+		INSERT INTO BASE_STAFF (SUID,
+		USER_NAME, PASSWORD, CAN_SERVE, LAST_ACTIVE_DATE,
+		IS_ADMIN, EMAIL, UID,
+		SERVICE_MODE, SERVICE_CONCURRENT_LIMITED, CREATE_DATE) VALUES
+		(#{suid}, #{userName},
+		#{password}, #{canServe}, #{lastActiveDate},
+		#{isAdmin}, #{email},
+		#{uid},#{serviceMode.id},
+		#{serviceConcurrentLimited},
+		#{createDate})
+	</insert>
+
+	<delete id="delete" parameterType="Long">
+		DELETE FROM BASE_STAFF WHERE
+		SUID=#{suid}
+	</delete>
+
+	<delete id="deleteByUID" parameterType="Long">
+		DELETE FROM BASE_STAFF WHERE
+		UID=#{uid}
+	</delete>
+
+	<insert id="batchInsert" parameterType="StaffPO">
+		INSERT INTO BASE_STAFF (SUID, USER_NAME, PASSWORD, CAN_SERVE,
+		LAST_ACTIVE_DATE, IS_ADMIN, EMAIL, UID, SERVICE_MODE,
+		SERVICE_CONCURRENT_LIMITED, CREATE_DATE) VALUES
+		<foreach collection="entities" item="item" index="index"
+			separator=",">
+			(#{item.suid}, #{item.userName}, #{item.password},
+			#{item.canServe},
+			#{item.lastActiveDate}, #{item.isAdmin},
+			#{item.email},
+			#{item.uid},#{item.serviceMode.id},
+			#{item.serviceConcurrentLimited},
+		    #{item.createDate})
+		</foreach>
+	</insert>
+
+</mapper>

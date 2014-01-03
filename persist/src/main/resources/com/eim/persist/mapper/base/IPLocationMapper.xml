@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eim.persist.mapper.base.IPLocationMapper">
+
+    <cache />
+
+    <select id="load" parameterType="string" resultType="IPLocationPO">
+        SELECT * FROM BASE_IP_LOCATION T WHERE T.IP_ADDRESS = #{ip}
+    </select>
+
+    <insert id="insert" parameterType="IPLocationPO">
+        INSERT INTO BASE_IP_LOCATION (IP_ADDRESS,ADDRESS,ADDRESS_SIMPLE,ADDRESS_DETAIL, NATION, PROVINCE,CITY,CITY_CODE,DISTRICT,STREET,STREET_NUMBER,LATITUDE,LONGITUDE,ISP,INSERT_DATE) VALUES
+        (#{ipAddress}, #{address}, #{addressSimple}, #{addressDetail}, #{nation}, #{province}, #{city}, #{cityCode}, #{district}, #{street}, #{streetNumber}, #{latitude}, #{longitude}, #{isp}, #{insertDate})
+    </insert>
+
+    <delete id="delete" parameterType="string">
+        DELETE FROM BASE_IP_LOCATION WHERE IP_ADDRESS=#{ip}
+    </delete>
+
+</mapper>

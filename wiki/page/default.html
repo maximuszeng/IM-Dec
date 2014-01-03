@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Contact us - 59iwine.com is under maintenance</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=1024">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
+<![endif]-->
+<link rel="stylesheet"
+	href="http://netdna.bootstrapcdn.com/bootswatch/3.0.1/cerulean/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://codeorigin.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/holder/2.0/holder.js"></script>
+<style>
+body {
+	background-color: #ff8400;
+	background-image: url("http://www.59iwine.com/logo.jpg");
+	background-repeat: repeat;
+	background-size: 400px Auto;
+}
+
+span.required {
+	color: RED;
+}
+
+.logo {
+	background-image: url("http://www.59iwine.com/logo.jpg");
+	background-repeat: no-repeat;
+	margin: 0;
+	padding: 0;
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	background-size: 30px 30px;
+}
+
+#pleaseWaitDialog {
+	width: 400px;
+	height: 50px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -25px;
+	margin-left: -200px;
+	padding: 20px;
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		var request;
+		
+		$("#send").click(function() {
+			$("#contactForm").submit(function(event){
+				 event.preventDefault();
+				 
+				 var $form = $(this);
+				 var $inputs = $form.find("input, select, button, textarea");
+				 var serializedData = $form.serialize();
+				 $inputs.prop("disabled", true);
+				 
+				 request = $.ajax({
+				        url: "/contactus.php",
+				        type: "post",
+				        data: serializedData
+				 });
+				 
+				 request.done(function (response, textStatus, jqXHR){
+				        // log a message to the console
+				        alert("Hooray, it worked!" + response);
+				 });
+
+				 // callback handler that will be called on failure
+				 request.fail(function (jqXHR, textStatus, errorThrown){
+				      alert("The following error occured: "+ textStatus, errorThrown);
+				 });
+
+				 // callback handler that will be called regardless
+				 // if the request failed or succeeded
+				 request.always(function () {
+				     $inputs.prop("disabled", false);
+				 });				 
+				 
+			});
+			
+			$("#contactForm").submit()
+		});
+
+		$("#name").blur(function() {
+			validateInput("#name", "#nameFG");
+		});
+
+		$("#contact").blur(function() {
+			validateInput("#contact", "#contactFG");
+		});
+
+		$("#message").blur(function() {
+			validateInput("#message", "#messageFG");
+		});
+		
+	});
+
+	function validateInput(inputId, formGroupId) {
+		var val = $(inputId).val();
+		if (val == '') {
+			$(formGroupId).addClass('has-error');
+			$(formGroupId).effect("shake");
+			return false;
+		} else {
+			$(formGroupId).removeClass('has-error');
+			return true;
+		}
+	}
+</script>
+</head>
+<body>
+	<div class="container">
+		<div class="content">
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">
+								<p>
+								<h1>
+									<div class="logo img-thumbnail"></div>
+									Contact Us<br/>
+									<small>59iwine.com is under
+										maintenance.</small>
+									<br/>
+								</h1>
+								</p>
+							</h4>
+						</div>
+						<div class="modal-body">
+							<form method="post" id="contactForm" action="/contactus.php" role="form">
+								<fieldset>
+									<div class="form-group" id="nameFG">
+										<label for="name"> <span class="required">*</span><span>Name:</span></label>
+										<input class="form-control" tabindex="1" id="name" name="name"
+											label="Name" type="text" value=""> <span
+											class="help-block">Please Input Your Name</span>
+									</div>
+									<div class="form-group" id="contactFG">
+										<label for="contact"> <span class="required">*</span><span>Email/Mobile:</span></label>
+										<input class="form-control" tabindex="2" id="contact"
+											name="contact" label="Email" type="text" value=""> <span
+											class="help-block">Please Input Email or Mobile No.</span>
+									</div>
+									<div class="form-group" id="messageFG">
+										<label for="message"> <span class="required">*</span><span>Message:</span></label>
+										<textarea tabindex="3" class="form-control" id="message"
+											name="message" label="Message" rows="7"></textarea>
+										<span class="help-block">Please Input Your Message</span>
+									</div>
+
+								</fieldset>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<a href="mailto:harry.sun@59iwine.com" class="btn btn-primary" role="button">Mail</a>
+							<button id="send" type="button" class="btn btn-primary">Send</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal hide" id="pleaseWaitDialog" data-backdrop="static"
+		data-keyboard="false">
+		<div class="modal-header">
+			<h1>Processing...</h1>
+		</div>
+		<div class="modal-body">
+			<div class="progress progress-striped active">
+				<div class="bar" style="width: 100%;"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

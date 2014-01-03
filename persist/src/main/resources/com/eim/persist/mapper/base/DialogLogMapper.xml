@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eim.persist.mapper.base.DialogLogMapper">
+
+	<cache />
+
+	<resultMap id="dialogLogResultMap" type="DialogLogPO">
+		<result property="appId" column="APP_ID" />
+		<result property="suid" column="SUID" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="auid" column="AUID" />
+		<result property="direction" column="DIRECTION"
+			typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+		<result property="contentType" column="CONTENT_TYPE"
+			typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+		<result property="dialogMode" column="DIALOG_MODE"
+			typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+		<result property="content" column="CONTENT" />
+	</resultMap>
+
+	<select id="loadByAppIdAndAuidAndCreateTimeRange" resultMap="dialogLogResultMap">
+		SELECT * FROM BASE_DIALOG_LOG T WHERE T.APP_ID = #{appId} and T.AUID= #{auId} and (T.CREATE_TIME BETWEEN #{createTimeStart} and #{createTimeEnd})
+	</select>
+
+	<insert id="batchInsert" parameterType="DialogLogPO">
+		INSERT INTO BASE_DIALOG_LOG
+		(APP_ID,SUID,CREATE_TIME,AUID,DIRECTION,CONTENT_TYPE,CONTENT,DIALOG_MODE) VALUES
+		<foreach collection="entities" item="item" index="index"
+			separator=",">
+			(#{item.appId}, #{item.suid}, #{item.createTime}, #{item.auid}, #{item.direction.id},#{item.contentType.id}, #{item.content},#{item.dialogMode.id})
+		</foreach>
+	</insert>
+
+	<insert id="insert" parameterType="DialogLogPO">
+		INSERT INTO BASE_DIALOG_LOG
+		(APP_ID,SUID,CREATE_TIME,AUID,DIRECTION,CONTENT_TYPE,CONTENT,DIALOG_MODE) VALUES
+		(#{appId}, #{suid}, #{createTime}, #{auid}, #{direction.id},#{contentType.id}, #{content},#{dialogMode.id})
+	</insert>
+
+	<delete id="deleteByAppIdAndCreateTimeRange" parameterType="Long">
+		DELETE FROM BASE_DIALOG_LOG WHERE APP_ID = #{appId} and (CREATE_TIME BETWEEN #{createTimeStart} and #{createTimeEnd})
+	</delete>
+
+	<delete id="deleteByAppId" parameterType="Long">
+		DELETE FROM BASE_DIALOG_LOG WHERE APP_ID = #{appId}
+	</delete>
+
+	<delete id="deleteByAuId" parameterType="Long">
+		DELETE FROM BASE_DIALOG_LOG WHERE AUID = #{auId}
+	</delete>
+
+	<delete id="deleteBySuId" parameterType="Long">
+		DELETE FROM BASE_DIALOG_LOG WHERE SUID = #{suId}
+	</delete>
+
+</mapper>

@@ -1,0 +1,24 @@
+{
+    address: "CN|北京|北京|None|CHINANET|1|None",   #地址
+    content:       #详细内容
+    {
+	    address: "北京市",   #简要地址
+	    address_detail:      #详细地址信息
+	    {
+		    city: "北京市",        #城市
+		    city_code: 131,       #百度城市代码
+		    district: "",           #区县
+		    province: "北京市",   #省份
+		    street: "",            #街道
+		    street_number: ""    #门址
+	    },
+	    point:               #百度经纬度坐标值
+	    {
+		    x: "116.39564504",
+		    y: "39.92998578"
+	    }
+    },
+    status: 0     #返回状态码
+} 
+                
+            

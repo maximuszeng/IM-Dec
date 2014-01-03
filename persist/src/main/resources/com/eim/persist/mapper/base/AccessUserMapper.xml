@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eim.persist.mapper.base.AccessUserMapper">
+
+    <cache />
+
+    <select id="load" parameterType="long" resultType="AccessUserPO">
+        SELECT * FROM BASE_ACCESS_USER T
+        WHERE T.APP_ID = #{appId} and T.AUID = #{auid}
+    </select>
+
+    <select id="loadByAppIdAndAccessTimeRange" resultType="AccessUserPO">
+        SELECT * FROM BASE_ACCESS_USER T
+        WHERE T.APP_ID = #{appId} and (T.ACCESS_TIME BETWEEN #{accessTimeStart} and #{accessTimeEnd})
+    </select>
+
+    <insert id="insert" parameterType="AccessUserPO">
+        INSERT INTO BASE_ACCESS_USER (APP_ID, AUID, IP_ADDRESS, NAME, EMAIL, MOBILE, ACCESS_TIME, SESSION_ID,ACCEPT_LANGUAGE,USER_AGENT,REFERER) VALUES
+        (#{appId}, #{auid}, #{ipAddress}, #{name}, #{email}, #{mobile}, #{accessTime}, #{sessionId},#{acceptLanguage},#{userAgent},#{referer})
+    </insert>
+    
+    <insert id="batchInsert" parameterType="AccessUserPO">
+        INSERT INTO BASE_ACCESS_USER (APP_ID, AUID, IP_ADDRESS, NAME, EMAIL, MOBILE, ACCESS_TIME, SESSION_ID,ACCEPT_LANGUAGE,USER_AGENT,REFERER,SERVER,XPOWEREDBY,HOST,CLIENT_DATE,VISA) VALUES
+        <foreach collection="entities" item="item" index="index" separator=",">
+           (#{item.appId}, #{item.auid}, #{item.ipAddress}, #{item.name}, #{item.email}, #{item.mobile}, #{item.accessTime}, #{item.sessionId},#{item.acceptLanguage},#{item.userAgent},#{item.referer})
+        </foreach>
+    </insert>
+    
+    <update id="update" parameterType="AccessUserPO">
+        UPDATE BASE_ACCESS_USER SET
+        NAME = #{name},
+        EMAIL = #{email},
+        MOBILE = #{mobile}
+        WHERE APP_ID = #{appId} and AUID = #{auid}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM BASE_ACCESS_USER WHERE APP_ID = #{appId} and AUID = #{auid}
+    </delete>
+    
+    <delete id="deleteByAppId" parameterType="Long">
+        DELETE FROM BASE_ACCESS_USER WHERE APP_ID = #{appId}
+    </delete>
+    
+    <delete id="deleteByAppIdAndAccessTimeRange" parameterType="Long">
+        DELETE FROM BASE_ACCESS_USER WHERE APP_ID = #{appId} and (ACCESS_TIME BETWEEN #{accessTimeStart} and #{accessTimeEnd})
+    </delete>
+
+</mapper>

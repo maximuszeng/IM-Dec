@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eim.persist.mapper.tag.TagObjectRelationMapper">
+
+	<cache />
+
+	<resultMap id="tagObjectRelationResultMap" type="TagObjectRelationPO">
+		<result property="tagId" column="TAG_ID" />
+		<result property="objectId" column="OBJECT_ID" />
+		<result property="objectCategoryId" column="OBJECT_CATEGORY_ID" />
+		<result property="weight" column="WEIGHT" />
+	</resultMap>
+
+	<select id="load" parameterType="long" resultMap="tagObjectRelationResultMap">
+		SELECT * FROM TAG_TAG_OBJECT_RELATION T WHERE T.TAG_ID = #{tagId} and T.OBJECT_ID = #{objectId} and T.OBJECT_CATEGORY_ID = #{objectCategoryId}  ORDER BY WEIGHT DESC
+	</select>
+
+	<select id="loadAll" resultMap="tagObjectRelationResultMap">
+		SELECT * FROM TAG_TAG_OBJECT_RELATION T  ORDER BY WEIGHT DESC
+	</select>
+	
+	<select id="loadByObjectId" parameterType="long" resultMap="tagObjectRelationResultMap">
+		SELECT * FROM TAG_TAG_OBJECT_RELATION T WHERE T.OBJECT_ID = #{objectId} AND T.OBJECT_CATEGORY_ID = #{objectCategoryId}  ORDER BY WEIGHT DESC
+	</select>
+	
+	<select id="loadByTagId" parameterType="long" resultMap="tagObjectRelationResultMap">
+		SELECT * FROM TAG_TAG_OBJECT_RELATION T WHERE T.TAG_ID = #{tagId} ORDER BY WEIGHT DESC
+	</select>
+	
+	<select id="loadByObjectCategoryId" parameterType="long" resultMap="tagObjectRelationResultMap">
+		SELECT * FROM TAG_TAG_OBJECT_RELATION T WHERE T.OBJECT_CATEGORY_ID = #{objectCategoryId} ORDER BY WEIGHT DESC
+	</select>
+
+	<update id="updateWeight" parameterType="TagObjectRelationPO">
+		UPDATE TAG_TAG_OBJECT_RELATION SET WEIGHT = #{weight}
+		WHERE TAG_ID = #{tagId} and OBJECT_ID = #{objectId} and OBJECT_CATEGORY_ID = #{objectCategoryId}
+	</update>
+
+	<insert id="insert" parameterType="TagObjectRelationPO">
+		INSERT INTO TAG_TAG_OBJECT_RELATION (TAG_ID, OBJECT_ID, OBJECT_CATEGORY_ID, WEIGHT)
+		VALUES (#{tagId}, #{objectId}, #{objectCategoryId}, #{weight})
+	</insert>
+
+	<insert id="batchInsert" parameterType="List">
+		INSERT INTO TAG_TAG_OBJECT_RELATION (TAG_ID, OBJECT_ID, OBJECT_CATEGORY_ID, WEIGHT) VALUES
+		<foreach collection="entities" item="item" index="index"
+			separator=",">
+			(#{item.tagId}, #{item.objectId}, #{item.objectCategoryId}, #{item.weight})
+		</foreach>
+	</insert>
+	
+	<delete id="delete" parameterType="Long">
+		DELETE FROM TAG_TAG_OBJECT_RELATION WHERE TAG_ID = #{tagId} and OBJECT_ID = #{objectId} and OBJECT_CATEGORY_ID = #{objectCategoryId}
+	</delete>
+
+	<delete id="deleteByObjectId" parameterType="Long">
+		DELETE FROM TAG_TAG_OBJECT_RELATION WHERE OBJECT_ID = #{objectId} AND OBJECT_CATEGORY_ID = #{objectCategoryId}
+	</delete>
+	
+	<delete id="deleteByObjectCategoryId" parameterType="Long">
+		DELETE FROM TAG_TAG_OBJECT_RELATION WHERE OBJECT_CATEGORY_ID = #{objectCategoryId}
+	</delete>
+	
+	<delete id="deleteByTagId" parameterType="Long">
+		DELETE FROM TAG_TAG_OBJECT_RELATION WHERE TAG_ID = #{tagId}
+	</delete>
+	
+</mapper>

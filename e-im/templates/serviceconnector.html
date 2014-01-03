@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{title}}</title> {{> css}} {{> script}}
+<script src="/javascripts/serviceconnector.js"></script>
+<link rel='stylesheet' href='/stylesheets/carousel.css' />
+<script>
+	$(document).ready(function() {
+		$('button[data-toggle=tooltip]').mouseover(function() { 
+			$(this).tooltip('show'); 
+		});
+	});
+	</script>
+	
+</head>
+<body>
+	<input type="hidden" id="appId" value="{{appid}}" />
+	<input type="hidden" id="auId" value="{{auid}}" />
+	
+	<div class="container">
+		<div class="row">
+			<div class="page-header col-md-offset-3 col-md-6 col-lg-6">
+				<h1>
+					<img src="http://cdnjs.cloudflare.com/ajax/libs/holder/2.0/holder.js/64x64/AppLogo">
+					{{appName}}<small>{{welcomeMessage}}</small>
+				</h1>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+		<div class="row">
+			<div class="panel panel-primary col-md-offset-3 col-md-6 col-lg-6">
+				<div id="connecting" class="panel-body">
+					<div class="btn btn-primary btn-lg btn-block" 
+							id="btnLoading">
+   							<i class='fa fa-spinner fa-spin fa-large'></i>
+   							<span>{{connecting}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="height: 20%;">
+			<div class="panel panel-primary col-md-offset-3 col-md-6">
+				<div class="panel-body">AD Area</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

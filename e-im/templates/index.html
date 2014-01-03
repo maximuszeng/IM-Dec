@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>{{title}}</title> {{> script}} {{> css}}
+<script src="/javascripts/index.js"></script>
+
+<link rel='stylesheet' href='./stylesheets/carousel.css' />
+<style>
+span.required {
+	color: RED;
+}
+</style>
+</head>
+<body>
+
+	<div class="navbar-wrapper">
+		<div class="container">
+			<div class="navbar navbar-inverse navbar-static-top"
+				role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">E-IM</a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#">Home</a></li>
+							<li><a href="/signup" target="_blank">Sign up</a></li>
+							<li><a href="/signin" target="_blank">Sign In</a></li>
+							
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Demo<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="/staff/chatwidget/C4CA4238A0B923820DCC509A6F75849B" target="_blank">Staff Demo</a></li>
+									<li><a href="/serve/C4CA4238A0B923820DCC509A6F75849B" target="_blank">User Demo</a></li>
+									<li><a href="/chat" target="_blank">Chat</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dashboard <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="/dashboard-template" target="_blank">Template Dashboard</a></li>
+									<li><a href="/admin/dashboard" target="_blank">Admin Dashboard</a></li>
+									<li><a href="/staff/dashboard" target="_blank">Staff Dashboard</a></li>
+									<li><a href="/management/dashboard" target="_blank">Management Dashboard</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Portal<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="/portal" target="_blank">Cotton Portal</a></li>
+									<li><a href="/portalviva" target="_blank">Viva Portal</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Locale<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="/?lang=zh_CN">简体中文</a></li>
+									<li><a href="/?lang=en-US">English</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Carousel
+    ================================================== -->
+	<div id="introCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#introCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#introCarousel" data-slide-to="1"></li>
+			<li data-target="#introCarousel" data-slide-to="2"></li>
+			<li data-target="#introCarousel" data-slide-to="3"></li>
+			<li data-target="#introCarousel" data-slide-to="4"></li>
+			<li data-target="#introCarousel" data-slide-to="5"></li>
+		</ol>
+
+		<div class="carousel-inner">
+		
+			<div class="item active">
+				<img data-src="holder.js/900x500/auto/#777:#7a7a7a/text:Free Online Customer Service Provider"
+					alt="Free Online Customer Service Provider">
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>Free Online Customer Service Provider.</h1>
+						<p>
+							The software and service is free for common use.
+						</p>
+						<p>
+							<a class="btn btn-lg btn-primary" href="#" role="button">Sign up now</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="item">
+				<img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:Modern User Interface"
+					alt="Modern User Interface">
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>Modern User Interface.</h1>
+						<p>E-IM based Twitter Bootstrap as the User Interface builder.</p>
+						<p>
+							<a class="btn btn-lg btn-primary" href="#" role="button">Browse
+								themes</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="item">
+				<img
+					data-src="holder.js/900x500/auto/#666:#6a6a6a/text:Professional Features"
+					alt="Professional Features">
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>Professional Features.</h1>
+						<p>E-IM provide professional features in Customer Service are.</p>
+						<p>
+							<a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="item">
+				<img
+					data-src="holder.js/900x500/auto/#666:#6a6a6a/text:Leading Technologies"
+					alt="Leading Technologies">
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>Leading Technologies.</h1>
+						<p>E-IM use the leading technologies such as based node.js, socket.io, Java, HTML5, CSS3 etc.</p>
+						<p>
+							<a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="item">
+				<img
+					data-src="holder.js/900x500/auto/#666:#6a6a6a/text:Easy Integrated"
+					alt="Easy Integrated">
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>Easy Integrated.</h1>
+						<p>E-IM use the SaaS(Software-as-a-service) style to support service.</p>
+						<p>
+							<a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="item">
+				<img
+					data-src="holder.js/900x500/auto/#666:#6a6a6a/text:High Performance"
+					alt="High Performance">
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>High Performance.</h1>
+						<p>High Performance.</p>
+						<p>
+							<a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<a class="left carousel-control" href="#introCarousel" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		
+		<a class="right carousel-control" href="#introCarousel" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+		
+	</div>
+	<!-- /.carousel -->
+
+
+
+	<!-- Marketing messaging and featurettes
+    ================================================== -->
+	<!-- Wrap the rest of the page in another container to center all the content. -->
+
+	<div class="container marketing">
+		<!-- <div class="row">
+		
+			<div class="col-lg-4">
+				<img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image">
+				
+				<h2>Free</h2>
+				
+				<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis
+					euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.
+					Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+					Praesent commodo cursus magna.
+				</p>
+					
+				<p>
+					<a class="btn btn-default" href="#" role="button">View details&raquo;</a>
+				</p>
+				
+			</div>
+			
+			<div class="col-lg-4">
+				<img class="img-circle" data-src="holder.js/140x140"
+					alt="Generic placeholder image">
+				<h2>Modern</h2>
+				<p>Duis mollis, est non commodo luctus, nisi erat porttitor
+					ligula, eget lacinia odio sem nec elit. Cras mattis consectetur
+					purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo,
+					tortor mauris condimentum nibh.</p>
+				<p>
+					<a class="btn btn-default" href="#" role="button">View details
+						&raquo;</a>
+				</p>
+			</div>
+			
+			<div class="col-lg-4">
+				<img class="img-circle" data-src="holder.js/140x140"
+					alt="Generic placeholder image">
+				<h2>Professional</h2>
+				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
+					egestas eget quam. Vestibulum id ligula porta felis euismod semper.
+					Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+					nibh, ut fermentum massa justo sit amet risus.</p>
+				<p>
+					<a class="btn btn-default" href="#" role="button">View details
+						&raquo;</a>
+				</p>
+			</div>
+			
+		</div>
+		
+		<hr class="featurette-divider">
+		
+		<div class="row">
+		
+			<div class="col-lg-4">
+				<img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image">
+				
+				<h2>Leading Technologies</h2>
+				
+				<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis
+					euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.
+					Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+					Praesent commodo cursus magna.
+				</p>
+					
+				<p>
+					<a class="btn btn-default" href="#" role="button">View details&raquo;</a>
+				</p>
+				
+			</div>
+			
+			<div class="col-lg-4">
+				<img class="img-circle" data-src="holder.js/140x140"
+					alt="Generic placeholder image">
+				<h2>Easy Integrated</h2>
+				<p>Duis mollis, est non commodo luctus, nisi erat porttitor
+					ligula, eget lacinia odio sem nec elit. Cras mattis consectetur
+					purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo,
+					tortor mauris condimentum nibh.</p>
+				<p>
+					<a class="btn btn-default" href="#" role="button">View details
+						&raquo;</a>
+				</p>
+			</div>
+			
+			<div class="col-lg-4">
+				<img class="img-circle" data-src="holder.js/140x140"
+					alt="Generic placeholder image">
+				<h2>High Performance</h2>
+				<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
+					egestas eget quam. Vestibulum id ligula porta felis euismod semper.
+					Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+					nibh, ut fermentum massa justo sit amet risus.</p>
+				<p>
+					<a class="btn btn-default" href="#" role="button">View details
+						&raquo;</a>
+				</p>
+			</div>
+		</div> -->
+
+
+		<!-- START THE FEATURETTES -->
+
+		<!-- <hr class="featurette-divider"> -->
+
+		<div class="row featurette">
+			<div class="col-md-7">
+				<h2 class="featurette-heading">
+					First featurette heading. <span class="text-muted">It'll
+						blow your mind.</span>
+				</h2>
+				<p class="lead">Donec ullamcorper nulla non metus auctor
+					fringilla. Vestibulum id ligula porta felis euismod semper.
+					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+					Fusce dapibus, tellus ac cursus commodo.</p>
+			</div>
+			<div class="col-md-5">
+				<img class="featurette-image img-responsive"
+					data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="col-md-5">
+				<img class="featurette-image img-responsive"
+					data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+			</div>
+			<div class="col-md-7">
+				<h2 class="featurette-heading">
+					Oh yeah, it's that good. <span class="text-muted">See for
+						yourself.</span>
+				</h2>
+				<p class="lead">Donec ullamcorper nulla non metus auctor
+					fringilla. Vestibulum id ligula porta felis euismod semper.
+					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+					Fusce dapibus, tellus ac cursus commodo.</p>
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="col-md-7">
+				<h2 class="featurette-heading">
+					And lastly, this one. <span class="text-muted">Checkmate.</span>
+				</h2>
+				<p class="lead">Donec ullamcorper nulla non metus auctor
+					fringilla. Vestibulum id ligula porta felis euismod semper.
+					Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+					Fusce dapibus, tellus ac cursus commodo.</p>
+			</div>
+			<div class="col-md-5">
+				<img class="featurette-image img-responsive"
+					data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<!-- /END THE FEATURETTES -->
+
+		<!-- FOOTER -->
+		<footer>
+			<p>
+				&copy; 2013 E-IM Company, Inc. &middot; <a href="#">Privacy</a>
+				&middot; <a href="#">Terms</a>
+			</p>
+		</footer>
+
+	</div>
+	<!-- /.container -->
+</body>
+</html>
