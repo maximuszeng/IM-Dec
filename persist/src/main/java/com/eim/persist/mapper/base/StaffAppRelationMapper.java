@@ -50,7 +50,7 @@ public interface StaffAppRelationMapper {
 	 * 
 	 * @param entities
 	 */
-	void batchInsert(@Param("entities") List<StaffAppRelationPO> entities);
+	void batchInsert(@Param("entities") List<? extends StaffAppRelationPO> entities);
 
 	/**
 	 * Delete relation by appid and suid

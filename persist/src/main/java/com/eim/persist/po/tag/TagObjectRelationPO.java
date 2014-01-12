@@ -8,7 +8,7 @@ import java.io.Serializable;
 import com.eim.persist.po.common.BasePO;
 
 /**
- * @author jacky.yong
+ * @author maximus.zeng
  * 
  */
 @SuppressWarnings("serial")
@@ -17,7 +17,15 @@ public class TagObjectRelationPO extends BasePO implements Serializable {
 	private Long objectId;
 	private Long objectCategoryId;
 	private Long weight;
+	private Long createDate;
 
+	public Long getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Long createDate) {
+		this.createDate = createDate;
+	}
 	public Long getTagId() {
 		return tagId;
 	}

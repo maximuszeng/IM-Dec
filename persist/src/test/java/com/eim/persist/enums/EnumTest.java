@@ -6,7 +6,7 @@ package com.eim.persist.enums;
 import org.springframework.util.Assert;
 
 /**
- * @author maximus.zeng
+ * @author jacky.yang
  * 
  */
 public class EnumTest {

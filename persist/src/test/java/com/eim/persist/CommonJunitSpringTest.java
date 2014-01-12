@@ -8,14 +8,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.eim.persist.mapper.base.SequenceVerifierMapper;
 
 /**
  * Base Junit Spring Test
  * 
- * @author maximus.zeng
+ * @author jacky.yang
  * 
  *         if you want to disable auto rollback, add @Rollback(false) to your
  *         test method.

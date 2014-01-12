@@ -8,7 +8,7 @@ import com.eim.persist.po.base.ApplicationPO;
 /**
  * Application Mapper
  * 
- * @author jacky.yong
+ * @author maximus.zeng
  * 
  */
 public interface ApplicationMapper extends BaseMapper<ApplicationPO, Long> {
