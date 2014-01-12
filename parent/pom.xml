@@ -123,6 +123,8 @@
 		<module>../service</module>
 		<module>../webapi</module>
 		<module>../wiki</module>
+		<module>../robot</module>
+		<module>../robotserver</module>
 	</modules>
 
 	<build>
