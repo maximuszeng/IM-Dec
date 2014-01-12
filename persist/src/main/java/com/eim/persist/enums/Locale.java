@@ -4,7 +4,7 @@
 package com.eim.persist.enums;
 
 /**
- * @author maximus.zeng
+ * @author jacky.yang
  * 
  */
 public enum Locale {

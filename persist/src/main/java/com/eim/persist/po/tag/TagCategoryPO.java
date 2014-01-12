@@ -9,15 +9,41 @@ import com.eim.persist.enums.Locale;
 import com.eim.persist.po.common.BasePO;
 
 /**
- * @author jacky.yong
+ * @author maximus.zeng
  * 
  */
 @SuppressWarnings("serial")
 public class TagCategoryPO extends BasePO implements Serializable {
 	private Long id;
 	private String name;
-	private String desc;
+	private String description;
 	private Locale locale;
+	private Long createDate;
+	private Long lastUpdateDate;
+
+	public Long getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(Long lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Long getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Long createDate) {
+		this.createDate = createDate;
+	}
 
 	public Locale getLocale() {
 		return locale;
@@ -41,14 +67,6 @@ public class TagCategoryPO extends BasePO implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getDesc() {
-		return desc;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
 	}
 
 }

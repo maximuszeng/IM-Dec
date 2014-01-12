@@ -8,20 +8,47 @@ import java.io.Serializable;
 import com.eim.persist.po.common.BasePO;
 
 /**
- * @author jacky.yong
+ * @author maximus.zeng
  * 
  */
 @SuppressWarnings("serial")
 public class ObjectCategoryPO extends BasePO implements Serializable {
-	private Long categoryId;
+	private Long id;
 	private String name;
+	private String description;
+	private Long createDate;
+	private Long lastUpdateDate;
 
-	public Long getCategoryId() {
-		return categoryId;
+	public Long getLastUpdateDate() {
+		return lastUpdateDate;
 	}
 
-	public void setCategoryId(Long categoryId) {
-		this.categoryId = categoryId;
+	public void setLastUpdateDate(Long lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Long createDate) {
+		this.createDate = createDate;
 	}
 
 	public String getName() {

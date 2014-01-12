@@ -8,7 +8,7 @@ import java.io.Serializable;
 import com.eim.persist.po.common.BasePO;
 
 /**
- * @author maximus.zeng
+ * @author jacky.yang
  * 
  */
 @SuppressWarnings("serial")

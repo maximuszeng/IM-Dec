@@ -13,6 +13,7 @@
 			typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
 		<result property="categoryId" column="CATEGORY_ID" />
 		<result property="weight" column="WEIGHT" />
+		<result property="createDate" column="CREATE_DATE" />
 	</resultMap>
 
 	<select id="load" parameterType="long" resultMap="tagsResultMap">
@@ -33,8 +34,8 @@
 	</update>
 
 	<insert id="insert" parameterType="TagsPO">
-		INSERT INTO TAG_TAGS (ID, NAME, LOCALE, CATEGORY_ID, WEIGHT) VALUES
-		(#{id}, #{name}, #{locale.id}, #{categoryId}, #{weight})
+		INSERT INTO TAG_TAGS (ID, NAME, LOCALE, CATEGORY_ID, WEIGHT, CREATE_DATE) VALUES
+		(#{id}, #{name}, #{locale.id}, #{categoryId}, #{weight}, #{createDate})
 	</insert>
 
 	<delete id="delete" parameterType="Long">
@@ -42,10 +43,10 @@
 	</delete>
 
 	<insert id="batchInsert" parameterType="List">
-		INSERT INTO TAG_TAGS (ID, NAME, LOCALE, CATEGORY_ID, WEIGHT) VALUES
+		INSERT INTO TAG_TAGS (ID, NAME, LOCALE, CATEGORY_ID, WEIGHT, CREATE_DATE) VALUES
 		<foreach collection="entities" item="item" index="index"
 			separator=",">
-			(#{item.id}, #{item.name}, #{item.locale.id}, #{item.categoryId}, #{item.weight})
+			(#{item.id}, #{item.name}, #{item.locale.id}, #{item.categoryId}, #{item.weight}, #{item.createDate})
 		</foreach>
 	</insert>
 
