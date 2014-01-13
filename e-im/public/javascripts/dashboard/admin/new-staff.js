@@ -9,6 +9,16 @@ $(document).ready(function() {
 		$(value).val("");
 	}
 	
+	$('#newStaffModal').on('hidden.bs.modal', function () {
+		
+	});
+	
+	$('#newStaffModal').on('shown.bs.modal', function () {
+		$("#newStaffModal").scrollTop(0);
+		$("#newStaffUserName").focus();
+		resetForm();
+	});
+	
 	$(_RESET).click(function(event) {
 		v.resetForm();
 		$(_FORM).find("input[type='text']").each(function(index, value) {
