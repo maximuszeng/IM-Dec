@@ -36,48 +36,11 @@ module.exports = BaseController.extend({
 			partials : customPartials
 		});
 	},
-	newStaffGet : function(req, res) {
-		res.locals = {
-			title : 'New Staff',
-			uid : req.session.uid,
-			suid : req.session.suid,
-			uname : req.session.uname
-		};
-		var v = new View(res, _Layout);
-
-		var customPartials = _.extend(_Partials, {
-			content : "dashboard/admin/staff/new"
-		});
-
-		v.render({
-			partials : customPartials
-		});
-	},
 	mgrStaffGet : function(req, res) {
 		var uid = req.session.uid;
 
-		StaffAPI.getStaffListByUID(uid, function(contents) {
-			res.locals = {
-				contents : contents,
-				title : 'Staff Manager',
-				uid : req.session.uid,
-				suid : req.session.suid,
-				uname : req.session.uname
-			};
-			var v = new View(res, _Layout);
-
-			var customPartials = _.extend(_Partials, {
-				content : "dashboard/admin/staff/mgr"
-			});
-
-			v.render({
-				partials : customPartials
-			});
-		});
-	},
-	newAppGet : function(req, res) {
 		res.locals = {
-			title : 'New Application',
+			title : 'Staff Manager',
 			uid : req.session.uid,
 			suid : req.session.suid,
 			uname : req.session.uname
@@ -85,7 +48,8 @@ module.exports = BaseController.extend({
 		var v = new View(res, _Layout);
 
 		var customPartials = _.extend(_Partials, {
-			content : "dashboard/admin/app/new"
+			content : "dashboard/admin/staff/mgr",
+			newStaffModal : "dashboard/admin/staff/new"
 		});
 
 		v.render({
@@ -94,23 +58,61 @@ module.exports = BaseController.extend({
 	},
 	mgrAppGet : function(req, res) {
 		var uid = req.session.uid;
-		AppAPI.getAppListByUID(uid, function(contents) {
-			res.locals = {
-				contents : contents,
-				title : 'Application Manager',
-				uid : req.session.uid,
-				suid : req.session.suid,
-				uname : req.session.uname
-			};
-			var v = new View(res, _Layout);
+		res.locals = {
+			title : 'Application Manager',
+			uid : req.session.uid,
+			suid : req.session.suid,
+			uname : req.session.uname
+		};
+		var v = new View(res, _Layout);
 
-			var customPartials = _.extend(_Partials, {
-				content : "dashboard/admin/app/mgr"
-			});
+		var customPartials = _.extend(_Partials, {
+			content : "dashboard/admin/app/mgr",
+			newAppModal : "dashboard/admin/app/new"
+		});
 
-			v.render({
-				partials : customPartials
-			});
+		v.render({
+			partials : customPartials
+		});
+	},
+	extendsGet : function(req, res) {
+		var uid = req.session.uid;
+		res.locals = {
+			title : 'Application Manager',
+			uid : req.session.uid,
+			suid : req.session.suid,
+			uname : req.session.uname
+		};
+		var v = new View(res, _Layout);
+
+		var customPartials = _.extend(_Partials, {
+			content : "dashboard/admin/page-extends"
+		});
+
+		v.render({
+			partials : customPartials
+		});
+	},
+	fileManagerGet : function(req, res) {
+		var uid = req.session.uid;
+		res.locals = {
+			title : 'File Manager',
+			uid : req.session.uid,
+			suid : req.session.suid,
+			uname : req.session.uname
+		};
+		var v = new View(res, _Layout);
+
+		var customPartials = _.extend(_Partials, {
+			content : "dashboard/admin/toolkit/filemgr/mgr-file",
+			uploader : "dashboard/admin/toolkit/filemgr/uploader",
+			newfolder : "dashboard/admin/toolkit/filemgr/new-folder",
+			customcss: "dashboard/admin/toolkit/filemgr/css",
+			customscripts: "dashboard/admin/toolkit/filemgr/script"
+		});
+
+		v.render({
+			partials : customPartials
 		});
 	}
 });
