@@ -1,5 +1,5 @@
 <div id="content">
-	<input type="hidden" value="{{uid}}" name="uid" />
+	<input type="hidden" value="{{uid}}" name="uid" id="uid"/>
 	<div id="content-header">
 		<h1>Application Management</h1>
 	</div>
@@ -9,13 +9,14 @@
 		<div class="row">
 			<div class="col-md-1">
 				<button type="button" id="newStaff"
-					class="btn btn-primary form-control">New</button>
+					class="btn btn-primary form-control" type="button"
+					data-toggle="modal" data-target="#newAppModal">New</button>
 			</div>
 			<div class="col-md-1">
 				<button type="button" id="editMode"
 					class="btn btn-primary form-control">Edit Mode</button>
 				<button id="editingMode" class="btn btn-success hidden">
-					<i class='fa fa-spinner fa-spin fa-large'></i><span>Editing<small>(auto
+					<i class='fa fa-spinner fa-spin fa-large'></i><span>Editing<small></small></span>
 							save)</small></span>
 				</button>
 			</div>

@@ -1,27 +1,37 @@
-<div id="content">
-	<form id="newAppForm" role="form" method="post">
-		<div id="content-header">
-			<h1>New Application</h1>
-		</div>
-		<!-- #content-header -->
+<div class="modal fade" id="newAppModal" tabindex="-1" role="dialog"
+	aria-labelledby="newAppModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="newAppModalLabel">
+					<i class="fa fa-desktop"></i>New Application Dialog
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form id="newAppForm" role="form" method="post"
+					class="form-horizontal">
+
+					<input type="hidden" name="uid" value="{{uid}}" />
 
 		<div id="content-container">
-			<div class="row">
+					<div class="portlet">
 				<div class="col-md-1">
 					<button type="button" id="saveNewApp"
 						class="btn btn-primary form-control">Save</button>
 				</div>
-				<div class="col-md-1">
-					<button type="button" id="resetNewApp"
+						<div class="portlet-header">
+							<h3>
 						class="btn btn-primary form-control">Reset</button>
 				</div>
 			</div>
 			<div class="portlet">
 				<div class="portlet-header">
 					<h3>
-						<i class="fa fa-tasks"></i> Basic Information
+								<i class="fa fa-tasks"></i>Basic Information
 					</h3>
-				</div>
+							</h3>
 				<!-- /.portlet-header -->
 				<div class="portlet-content">
 					<div class="row">
@@ -30,11 +40,41 @@
 								type="text" id="appName" minlength="6" maxlength="50"
 								class="form-control">
 						</div>
-						<div class="form-group col-md-5 col-md-offset-1">
-							<label for="email" class="control-label">Industry
-								Category</label> <input type="text" minlength="6" maxlength="50"
-								id="industryCategory" class="form-control">
+						<!-- /.portlet-header -->
+						<div class="portlet-content">
+
+							<div class="form-group popover-bottom" rel="popover"
+								data-content="Input your application's name.">
+								<label for="newAppAppName" class="col-sm-3 control-label">Application
+									Name</label>
+								<div class="col-sm-9">
+									<input type="text" id="newAppAppName" minlength="6"
+										maxlength="50" name="name" class="form-control" required>
+								</div>
+							</div>
+
+							<div class="form-group popover-bottom" rel="popover"
+								data-content="Select your application's category.">
+								<label for="newAppIndustryCategory"
+									class="col-sm-3 control-label">Industry Category</label>
+								<div class="col-sm-9">
+									<input type="text" minlength="6" maxlength="50"
+										id="newAppIndustryCategory" name="industryCategory"
+										class="form-control" required>
+								</div>
+							</div>
+
+							<div class="apptag form-group popover-top" rel="popover"
+								data-content="In order for us to provide you with better service, please choose or select your app tags, at least 3 tags is required.">
+								<label for="newAppAppTags" class="col-sm-3 control-label">App
+									Tags</label>
+								<div class="col-sm-9">
+									<input type="text" id="newAppAppTags"  />
+								</div>
+							</div>
+
 						</div>
+						<!-- /.portlet-content -->
 					</div>
 					<div class="row">
 						<div class="form-group col-md-5 col-md-offset-1 popover-bottom"
@@ -113,13 +153,13 @@
 				<!-- /.portlet-header -->
 				<div class="portlet-content">
 					<div class="row">
-						<div class="form-group col-md-3 col-md-offset-1">
+				<div class="col-sm-2">
 							<label class="control-label">Staff List</label>
 							<ul class="nav nav-pills nav-stacked">
-								<li class="active"><a href="#"
+					<button type="button" id="resetNewApp" class="btn btn-default"
 									class="list-group-item active">Staff A<span class="badge">14</span></a></li>
 								<li><a href="#" class="list-group-item">Staff B</a></li>
-								<li><a href="#" class="list-group-item">Staff C</a></li>
+						data-dismiss="modal">Close</button>
 							</ul>
 						</div>
 						<div class="form-group col-md-8">
@@ -134,7 +174,7 @@
 		</div>
 		<!-- /#content-container -->
 
-	</form>
+	</div>
 </div>
 
 <script src="/javascripts/dashboard/admin/new-app.js"></script>
