@@ -48,7 +48,8 @@ module.exports = BaseController.extend({
 			var v = new View(res, _Layout);
 
 			var customPartials = _.extend(_Partials, {
-				content : "dashboard/management/tag/mgr-object-category"
+				content : "dashboard/management/tag/mgr-object-category",
+				newObjectCategoryModal : "dashboard/management/tag/new-object-category"
 			});
 
 			v.render({
