@@ -1,27 +1,25 @@
-<div id="content">
-	<form id="newAppForm" role="form" method="post">
-		<div id="content-header">
-			<h1>New Application</h1>
-		</div>
-		<!-- #content-header -->
-
-		<div id="content-container">
-			<div class="row">
-				<div class="col-md-1">
-					<button type="button" id="saveNewApp"
-						class="btn btn-primary form-control">Save</button>
-				</div>
-				<div class="col-md-1">
-					<button type="button" id="resetNewApp"
-						class="btn btn-primary form-control">Reset</button>
-				</div>
+<div class="modal fade" id="newAppModal" tabindex="-1" role="dialog"
+	aria-labelledby="newAppModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="newAppModalLabel">
+					<i class="fa fa-desktop"></i>New Application Dialog
+				</h4>
 			</div>
-			<div class="portlet">
-				<div class="portlet-header">
-					<h3>
-						<i class="fa fa-tasks"></i> Basic Information
-					</h3>
-				</div>
+			<div class="modal-body">
+				<form id="newAppForm" role="form" method="post"
+					class="form-horizontal">
+
+					<input type="hidden" name="uid" value="{{uid}}" />
+
+					<div class="portlet">
+						<div class="portlet-header">
+							<h3>
+								<i class="fa fa-tasks"></i>Basic Information
+							</h3>
 				<!-- /.portlet-header -->
 				<div class="portlet-content">
 					<div class="row">
@@ -30,20 +28,55 @@
 								type="text" id="appName" minlength="6" maxlength="50"
 								class="form-control">
 						</div>
-						<div class="form-group col-md-5 col-md-offset-1">
-							<label for="email" class="control-label">Industry
-								Category</label> <input type="text" minlength="6" maxlength="50"
-								id="industryCategory" class="form-control">
+						<!-- /.portlet-header -->
+						<div class="portlet-content">
+
+							<div class="form-group popover-bottom" rel="popover"
+								data-content="Input your application's name.">
+								<label for="newAppAppName" class="col-sm-3 control-label">Application
+									Name</label>
+								<div class="col-sm-9">
+									<input type="text" id="newAppAppName" minlength="6"
+										maxlength="50" name="name" class="form-control" required>
+								</div>
+							</div>
+
+							<div class="form-group popover-bottom" rel="popover"
+								data-content="Select your application's category.">
+								<label for="newAppIndustryCategory"
+									class="col-sm-3 control-label">Industry Category</label>
+								<div class="col-sm-9">
+									<input type="text" minlength="6" maxlength="50"
+										id="newAppIndustryCategory" name="industryCategory"
+										class="form-control" required>
+								</div>
+							</div>
+
+							<div class="apptag form-group popover-top" rel="popover"
+								data-content="In order for us to provide you with better service, please choose or select your app tags, at least 3 tags is required.">
+								<label for="newAppAppTags" class="col-sm-3 control-label">App
+									Tags</label>
+								<div class="col-sm-9">
+									<input type="text" id="newAppAppTags"  />
+								</div>
+							</div>
+
 						</div>
+						<!-- /.portlet-content -->
 					</div>
 					<div class="row">
 						<div class="form-group col-md-5 col-md-offset-1 popover-bottom"
-								rel="popover"
-								data-content="Input your application's domain without http, such as www.sample.com.">
-							<label for="userName" class="control-label">Domain</label> <input
-								type="text" id="userName" class="form-control"
-								data-rule-domain="true">
+							<h3>
+								<i class="fa fa-tasks">Chat Widget Configuration</i>
+							</h3>
 						</div>
+						<!-- /.portlet-header -->
+						<div class="portlet-content">
+
+							<div class="form-group popover-bottom" rel="popover"
+								data-content="Input your application's domain without http, such as www.sample.com.">
+
+								<label for="newAppDomain" class="col-sm-3 control-label">Domain</label>
 						<div class="form-group col-md-5 col-md-offset-1 popover-bottom"
 								rel="popover"
 								data-content="Choose your application type, default is web, ios and andorid is not support temporary.">
@@ -78,48 +111,39 @@
 					</div>
 				</div>
 				<!-- /.portlet-content -->
-			</div>
-			<!-- /.portlet -->
+							</div>
 
-			<div class="portlet">
-				<div class="portlet-header">
-					<h3>
-						<i class="fa fa-tasks">Chat Widget Configuration</i>
-					</h3>
-				</div>
-				<!-- /.portlet-header -->
-				<div class="portlet-content">
-					<div class="row">
-						<div class="form-group col-md-10 col-md-offset-1 popover-top"
-								rel="popover"
+							<div class="form-group popover-top" rel="popover"
 								data-content="Input your application's welcome message for access user. Just allow text, script and hyperlink is forbidden.">
-							<label for="welcomeMsg" class="control-label">Welcome
-								Message</label>
-							<textarea id="welcomeMsg" name="welcomeMsg"
-								style="width: 100%"></textarea>
-						</div>
-					</div>
-				</div>
-				<!-- /.portlet-content -->
-			</div>
-			<!-- /.portlet -->
+								<label for="newAppWelcomeMsg" class="col-sm-3 control-label">Welcome
+									Message</label>
+								<div class="col-sm-9">
+									<textarea id="newAppWelcomeMsg" name="welcomeMessage"
+										style="width: 100%" minlength="20" maxlength="100" required></textarea>
+								</div>
+							</div>
 
-			<div class="portlet">
-				<div class="portlet-header">
-					<h3>
-						<i class="fa fa-tasks">Serve Staffs</i>
-					</h3>
+						</div>
+						<!-- /.portlet-content -->
+					</div>
+					<!-- /.portlet -->
+				</form>
+			</div>
+			<div class="modal-footer">
+				<div class="col-sm-offset-8 col-sm-2">
+					<button type="button" id="saveNewApp"
+						class="btn btn-primary form-control">Save</button>
 				</div>
 				<!-- /.portlet-header -->
 				<div class="portlet-content">
 					<div class="row">
-						<div class="form-group col-md-3 col-md-offset-1">
+				<div class="col-sm-2">
 							<label class="control-label">Staff List</label>
 							<ul class="nav nav-pills nav-stacked">
-								<li class="active"><a href="#"
+					<button type="button" id="resetNewApp" class="btn btn-default"
 									class="list-group-item active">Staff A<span class="badge">14</span></a></li>
 								<li><a href="#" class="list-group-item">Staff B</a></li>
-								<li><a href="#" class="list-group-item">Staff C</a></li>
+						data-dismiss="modal">Close</button>
 							</ul>
 						</div>
 						<div class="form-group col-md-8">
@@ -134,7 +158,7 @@
 		</div>
 		<!-- /#content-container -->
 
-	</form>
+	</div>
 </div>
 
 <script src="/javascripts/dashboard/admin/new-app.js"></script>
