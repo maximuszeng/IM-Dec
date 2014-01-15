@@ -27,7 +27,24 @@ EIMFileUploadMiddleware.prototype.prepareOptions = function (options) {
         }
     }, options);
 
+    _.each(['uploadDir', 'uploadUrl'], function (key) {
+        if (!_.isFunction(options[key])) {
+            var originalValue = options[key];
+            options[key] = function () {
+                return originalValue
+            };
+        }
+    });
+
     return options;
 }
+
+EIMFileUploadMiddleware.prototype.configure = function (options) {
+    this.options = this.prepareOptions(options);
+};
+
+EIMFileUploadMiddleware.prototype.fileManager = function (options) {
+    return require('./lib/filemanager')(this, this.prepareOptions(_.extend(this.options, options)));
+};
 
 module.exports = new EIMFileUploadMiddleware();
