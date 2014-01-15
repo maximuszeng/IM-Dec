@@ -4,6 +4,8 @@
 package com.eim.service.tag.impl;
 
 
+import java.util.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,8 +29,9 @@ public class TagCategoryServiceTest extends CommonJunitSpringTest {
 	private TagCategoryBO newTagCategory(int t) {
 		TagCategoryBO tagCategoryBO = new TagCategoryBO();
 		tagCategoryBO.setName("TagCategory" + t);
-		tagCategoryBO.setDesc("DESC" + t);
+		tagCategoryBO.setDescription("DESC" + t);
 		tagCategoryBO.setLocale(Locale.EN_US);
+		tagCategoryBO.setCreateDate(new Date().getTime());
 		return tagCategoryBO;
 	}
 

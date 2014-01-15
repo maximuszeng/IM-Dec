@@ -3,6 +3,9 @@
  */
 package com.eim.service.tag.impl;
 
+
+import java.util.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -50,6 +53,8 @@ public class ObjectCategoryServiceTest extends CommonJunitSpringTest {
 	private ObjectCategoryBO newObjectCategory(int t) {
 		ObjectCategoryBO objectCategoryBO = new ObjectCategoryBO();
 		objectCategoryBO.setName("ObjectCategory" + t);
+		objectCategoryBO.setCreateDate(new Date().getTime());
+		objectCategoryBO.setDescription("ObjectCategory" + t);
 		return objectCategoryBO;
 	}
 
