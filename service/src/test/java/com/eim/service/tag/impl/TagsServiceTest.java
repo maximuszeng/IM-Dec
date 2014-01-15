@@ -4,6 +4,7 @@
 package com.eim.service.tag.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.After;
@@ -30,7 +31,8 @@ public class TagsServiceTest extends CommonJunitSpringTest {
 		tagsBO.setName("Tags" + t);
 		tagsBO.setLocale(Locale.EN_US);
 		tagsBO.setWeight((long) t);
-		tagsBO.setCategoryId(1L);
+		tagsBO.setCategoryId(6L);
+		tagsBO.setCreateDate(new Date().getTime());
 		return tagsBO;
 	}
 

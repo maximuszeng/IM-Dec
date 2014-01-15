@@ -3,6 +3,8 @@
  */
 package com.eim.service.tag.impl;
 
+import java.util.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,10 +27,11 @@ public class TagObjectRelationServiceTest extends CommonJunitSpringTest {
 
 	private TagObjectRelationBO newTagObjectRelation(int t) {
 		TagObjectRelationBO tagObjectRelationBO = new TagObjectRelationBO();
-		tagObjectRelationBO.setObjectCategoryId(1L);
+		tagObjectRelationBO.setObjectCategoryId(11L);
 		tagObjectRelationBO.setObjectId((long) t);
-		tagObjectRelationBO.setTagId(1L);
+		tagObjectRelationBO.setTagId(7L);
 		tagObjectRelationBO.setWeight((long) t);
+		tagObjectRelationBO.setCreateDate(new Date().getTime());
 		return tagObjectRelationBO;
 	}
 
