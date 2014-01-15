@@ -46,4 +46,5 @@ public class QAItem {
 	public void setLocale(String locale) {
 		this.locale = locale;
 	}
+
 }
