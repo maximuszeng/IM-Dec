@@ -10,6 +10,7 @@ import org.springframework.util.DigestUtils;
 import com.eim.persist.mapper.base.AccessUserMapper;
 import com.eim.persist.mapper.base.ApplicationMapper;
 import com.eim.persist.mapper.base.DialogLogMapper;
+import com.eim.persist.mapper.base.StaffAppRelationMapper;
 import com.eim.persist.mapper.base.StaffMapper;
 import com.eim.persist.mapper.base.UserMapper;
 import com.eim.persist.po.common.BasePO;
@@ -41,6 +42,8 @@ public abstract class BaseService<B, P extends BasePO> {
 	protected StaffOperator staffOperator;
 	@Autowired
 	protected UserOperator userOperator;
+	@Autowired
+	protected StaffAppRelationMapper staffAppRelationMapper;
 
 	private Class<B> boType;
 
