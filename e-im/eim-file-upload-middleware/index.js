@@ -27,6 +27,15 @@ EIMFileUploadMiddleware.prototype.prepareOptions = function (options) {
         }
     }, options);
 
+    _.each(['uploadDir', 'uploadUrl'], function (key) {
+        if (!_.isFunction(options[key])) {
+            var originalValue = options[key];
+            options[key] = function () {
+                return originalValue
+            };
+        }
+    });
+
     return options;
 }
 
