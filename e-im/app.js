@@ -73,6 +73,17 @@ app.use(function(req, res, next) {
     next();
 });
 
+function readSharedTemplatesMiddleware(req, res, next) {
+	if (!app.sharedTemplates || app.settings.env === "development") {
+		SharedTemplateCompiler.readSharedTemplates(app);
+	}
+	next();
+}
+
+SharedTemplateCompiler.readSharedTemplates(app);
+
+
+
 // PortalController start
 
 app.get('/', PortalController.index);
@@ -118,9 +129,11 @@ app.get('/admin/dashboard', AdminDashboardController.dashboard);
 
 app.get('/admin/staff/mgr', AdminDashboardController.mgrStaffGet);
 
-app.get('/admin/app/new', AdminDashboardController.newAppGet);
-
 app.get('/admin/app/mgr', AdminDashboardController.mgrAppGet);
+
+app.get('/admin/extends', AdminDashboardController.extendsGet);
+
+app.get('/admin/tools/filemgr', AdminDashboardController.fileManagerGet);
 
 // AdminDashboardController end
 

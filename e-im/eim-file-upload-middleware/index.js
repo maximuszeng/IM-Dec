@@ -39,6 +39,7 @@ EIMFileUploadMiddleware.prototype.prepareOptions = function (options) {
     return options;
 }
 
+<<<<<<< HEAD
 EIMFileUploadMiddleware.prototype.configure = function (options) {
     this.options = this.prepareOptions(options);
 };
@@ -55,4 +56,6 @@ EIMFileUploadMiddleware.prototype.fileManagerext = function (options) {
     return require('./lib/filemanagerext')(this, this.prepareOptions(_.extend(this.options, options)));
 };
 
+=======
+>>>>>>> 624dfc0b817dd28d7d4251fc7d372b3c44790d8d
 module.exports = new EIMFileUploadMiddleware();
