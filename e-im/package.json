@@ -20,7 +20,7 @@
     "async":"*",
     "swig": "1.0.x",
     "imagemagick": "0.1.x",
-    "bower":"*"
+    "json-query" :"*"
   },
   "devDependencies": { "mocha": "*", "should" : "*","chai":"*","sinon":"*" },
   "contributors": [{
