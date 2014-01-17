@@ -22,7 +22,7 @@
     "imagemagick": "0.1.x",
     "json-query" :"*"
   },
-  "devDependencies": { "mocha": "*", "should" : "*","chai":"*","sinon":"*" },
+  "devDependencies": { "mocha": "*", "should" : "*","chai":"*","sinon":"*", "redis-commander":"*" },
   "contributors": [{
       "name": "Maximus Zeng",
       "email": "yanglei2010@gmail.com"
