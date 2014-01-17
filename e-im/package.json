@@ -18,6 +18,8 @@
     "connect-redis": "*",
     "crypto":"*",
     "async":"*",
+    "swig": "1.0.x",
+    "imagemagick": "0.1.x",
     "bower":"*"
   },
   "devDependencies": { "mocha": "*", "should" : "*","chai":"*","sinon":"*" },
