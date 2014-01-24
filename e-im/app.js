@@ -37,7 +37,46 @@ app.use(express.session({
 	secret : '1234567890QWERTY'
 }));
 
-i18n.configure({
+//configure upload middleware
+upload.configure({
+	 tmpDir: __dirname + '/tmp',
+	 maxPostSize: 100000000, // 100MB
+	 minFileSize: 1,
+	 maxFileSize: 100000000, // 100MB
+	 acceptFileTypes: /.+/i,
+	 imageTypes: /\.(gif|jpe?g|png)$/i,
+	 imageVersions: {
+		 thumbnail: {
+	         width: 64,
+	         height: 64
+	     },
+	     3232: {
+	         width: 32,
+	         height: 32
+	     }
+	 }
+});
+
+
+i18n.configure({//configure upload middleware
+	upload.configure({
+		 tmpDir: __dirname + '/tmp',
+		 maxPostSize: 100000000, // 100MB
+		 minFileSize: 1,
+		 maxFileSize: 100000000, // 100MB
+		 acceptFileTypes: /.+/i,
+		 imageTypes: /\.(gif|jpe?g|png)$/i,
+		 imageVersions: {
+			 thumbnail: {
+		         width: 64,
+		         height: 64
+		     },
+		     3232: {
+		         width: 32,
+		         height: 32
+		     }
+		 }
+	});
 	locales : [ 'zh_CN', 'en-US' ],
 	directory : __dirname + '/locales',
 	defaultLocale : 'zh_CN'
