@@ -82,7 +82,13 @@ function readSharedTemplatesMiddleware(req, res, next) {
 
 SharedTemplateCompiler.readSharedTemplates(app);
 
-
+app.get("/templates.js", readSharedTemplatesMiddleware, function(req, res, next) {
+	var content = SharedTemplateCompiler.sharedTemplateTemplate.render({
+		templates : app.sharedTemplates
+	});
+	res.contentType("application/javascript");
+	res.send(content);
+});
 
 // PortalController start
 
