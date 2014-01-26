@@ -61,6 +61,7 @@ app.use(function (req, res, next) {
 	var url = req.originalUrl;
 	if (url.indexOf('/upload') === 0 && req.session.uid) {
 		var path = url.substring(7);
+		var lstSlash = path.lastIndexOf('/');
 		var subFolder = path;
 		if (lstSlash == 0 && path.indexOf('.') != -1) {
 			subFolder = '/';
@@ -71,13 +72,25 @@ app.use(function (req, res, next) {
 		upload.fileHandler({
 		     uploadDir: function () {
 		         return __dirname + '/public/contents/'  + req.session.uid + subFolder;
-		         height: 64
 		     },
 		     uploadUrl: function () {
 		         return '/contents/' + req.session.uid + subFolder;
-		         height: 32
 		     }
-		 }
+		 })(req, res, next);
+	} else {
+		next();
+	}
+});
+
+app.use(function(req, res, next) {
+	var url = req.originalUrl;
+	if (url.indexOf('/fm/newfolder') === 0 && req.session.uid) {
+		var newFolderPath = url.substring(13);
+		upload.fileManagerext({
+		     uploadDir: function () {
+		         return __dirname + '/public/contents/'  + req.session.uid;
+		     }
+		 })('NF', {newFolderPath:newFolderPath}, req, res, next);
 	});
 	locales : [ 'zh_CN', 'en-US' ],
 	directory : __dirname + '/locales',
