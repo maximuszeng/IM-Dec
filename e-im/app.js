@@ -57,7 +57,7 @@ upload.configure({
 	 }
 });
 
-
+app.use(function (req, res, next) {
 	var url = req.originalUrl;
 	if (url.indexOf('/upload') === 0 && req.session.uid) {
 		var path = url.substring(7);
@@ -68,13 +68,13 @@ upload.configure({
 			subFolder = path.substring(0, path.lastIndexOf('/'));
 		}
 		console.log('subFolder='+subFolder);
-		 imageVersions: {
-			 thumbnail: {
-		         width: 64,
+		upload.fileHandler({
+		     uploadDir: function () {
+		         return __dirname + '/public/contents/'  + req.session.uid + subFolder;
 		         height: 64
 		     },
-		     3232: {
-		         width: 32,
+		     uploadUrl: function () {
+		         return '/contents/' + req.session.uid + subFolder;
 		         height: 32
 		     }
 		 }
