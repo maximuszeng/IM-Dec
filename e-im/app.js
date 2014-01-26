@@ -58,14 +58,16 @@ upload.configure({
 });
 
 
-i18n.configure({//configure upload middleware
-	upload.configure({
-		 tmpDir: __dirname + '/tmp',
-		 maxPostSize: 100000000, // 100MB
-		 minFileSize: 1,
-		 maxFileSize: 100000000, // 100MB
-		 acceptFileTypes: /.+/i,
-		 imageTypes: /\.(gif|jpe?g|png)$/i,
+	var url = req.originalUrl;
+	if (url.indexOf('/upload') === 0 && req.session.uid) {
+		var path = url.substring(7);
+		var subFolder = path;
+		if (lstSlash == 0 && path.indexOf('.') != -1) {
+			subFolder = '/';
+		} else if (lstSlash > 0 && path.indexOf('.') != -1) {
+			subFolder = path.substring(0, path.lastIndexOf('/'));
+		}
+		console.log('subFolder='+subFolder);
 		 imageVersions: {
 			 thumbnail: {
 		         width: 64,
