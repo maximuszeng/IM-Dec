@@ -17,7 +17,6 @@
 					class="btn btn-primary form-control">Edit Mode</button>
 				<button id="editingMode" class="btn btn-success hidden">
 					<i class='fa fa-spinner fa-spin fa-large'></i><span>Editing<small></small></span>
-							save)</small></span>
 				</button>
 			</div>
 		</div>
@@ -33,7 +32,7 @@
 				<div class="row">
 					<div class="col-md-offset-1 col-md-10">
 						<table class="table table-striped table-bordered"
-							id="staffListTable">
+							id="appListTable">
 							<thead>
 								<tr>
 									<th>App Key</th>
@@ -45,29 +44,6 @@
 								</tr>
 							</thead>
 							<tbody>
-								{{#contents}}
-								<tr>
-									<td>{{appKey}}</td>
-									<td><a href="#" data-pk="2" class="cell-email">{{domain}}</a><i class="fa fa-flag fa-2x pull-left"></i></td>
-									<td>{{name}}</td>
-									<td>{{appType}}</td>
-									<td>{{createTime}}</td>
-									<td>
-										<div class="btn-group">
-											<button type="button" class="btn btn-success dropdown-toggle"
-												data-toggle="dropdown">
-												Action <span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Welcome Message</a></li>
-												<li><a href="#">Manage Staff</a></li>
-												<li class="divider"></li>
-												<li><a href="#">Delete</a></li>
-											</ul>
-										</div>
-									</td>
-								</tr>
-								{{/contents}}
 							</tbody>
 							<tfoot>
 							</tfoot>
