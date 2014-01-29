@@ -91,7 +91,31 @@ app.use(function(req, res, next) {
 		         return __dirname + '/public/contents/'  + req.session.uid;
 		     }
 		 })('NF', {newFolderPath:newFolderPath}, req, res, next);
-	});
+	} else {
+		next();
+	}
+});
+
+// events
+upload.on('begin', function(fileInfo) {
+	//console.log(fileInfo);
+});
+upload.on('abort', function(fileInfo) {
+	//console.log(fileInfo);
+});
+upload.on('end', function(fileInfo) {
+	//console.log(fileInfo);
+});
+upload.on('delete', function(fileInfo) {
+	//console.log(fileInfo);
+});
+upload.on('error', function(e) {
+	//console.log(e.message);
+});
+
+app.use(express.bodyParser());
+
+i18n.configure({
 	locales : [ 'zh_CN', 'en-US' ],
 	directory : __dirname + '/locales',
 	defaultLocale : 'zh_CN'
