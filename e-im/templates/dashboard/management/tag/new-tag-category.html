@@ -6,6 +6,21 @@
 
 	<div id="newTagCategoryModal" class="modal fade" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">¡Á</button>
+					<h3 id="myModalLabel">Create New Tag Category</h3>
+				</div>
+				<div class="modal-body">
+					<!-- remote content will be inserted here via jQuery load() -->
+				</div>
+				<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<!-- #content-header -->
@@ -50,6 +65,15 @@
 									<td>{{locale}}</td>
 									<td>
 										<div class="btn-group">
+											<button type="button" class="btn btn-success dropdown-toggle"
+												data-toggle="dropdown">
+												Action <span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu" role="menu">
+												<li class="divider"></li>
+												<li><a href="#">Delete</a></li>
+											</ul>
+										</div>
 									</td>
 								</tr>
 								{{/contents}}
@@ -60,6 +84,12 @@
 					</div>
 				</div>
 				<div class="row">
+					<div class="col-md-offset-1 col-md-10">
+						<ul class="pager">
+							<li class="previous"><a href="#">&larr; Previous</a></li>
+							<li class="next"><a href="#">Next &rarr;</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<!-- /.portlet-content -->
@@ -67,3 +97,6 @@
 		<!-- /.portlet -->
 	</div>
 </div>
+<!-- /#content-container -->
+<script src="/javascripts/dashboard/management/tag/mgr-tag-category.js"></script>
+<script src="/libs/jquery-validation/lib/jquery.mockjax.js"></script>
