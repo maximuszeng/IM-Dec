@@ -11,10 +11,21 @@
 				<button type="button" id="newStaff"
 					class="btn btn-primary form-control">New</button>
 			</div>
+			<div class="col-md-1">
+				<button type="button" id="editMode"
+					class="btn btn-primary form-control">Edit Mode</button>
+				<button id="editingMode" class="btn btn-success hidden">
+					<i class='fa fa-spinner fa-spin fa-large'></i><span>Editing<small>(auto
+							save)</small></span>
+				</button>
+			</div>
 		</div>
 
 		<div class="portlet">
 			<div class="portlet-header">
+				<h3>
+					<i class="fa fa-tasks"></i>Staff List
+				</h3>
 			</div>
 			<!-- /.portlet-header -->
 			<div class="portlet-content">
@@ -25,6 +36,10 @@
 							<thead>
 								<tr>
 									<th>Tag Id</th>
+									<th>Object Category Id</th>
+									<th>Object Id</th>
+									<th>Weight</th>
+									<th>Actions</th>
 								</tr>
 							</thead>
 							<tbody>
