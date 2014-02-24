@@ -51,6 +51,16 @@
 									<td>{{objectId}}</td>
 									<td>{{weight}}</td>
 									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-success dropdown-toggle"
+												data-toggle="dropdown">
+												Action <span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu" role="menu">
+												<li class="divider"></li>
+												<li><a href="#">Delete</a></li>
+											</ul>
+										</div>
 									</td>
 								</tr>
 								{{/contents}}
@@ -74,3 +84,7 @@
 		<!-- /.portlet -->
 	</div>
 </div>
+<!-- /#content-container -->
+<script
+	src="/javascripts/dashboard/management/tag/mgr-tag-object-relation.js"></script>
+<script src="/libs/jquery-validation/lib/jquery.mockjax.js"></script>
