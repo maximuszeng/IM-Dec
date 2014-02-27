@@ -51,7 +51,15 @@
 										<a href="#" data-pk="2" class="cell-name">{{id}}</a>
 									
 									</td>
+									<td><a href="#" data-pk="2" class="cell-email">{{name}}</a></td>
+									<td>
 									{{locale}}
+									</td>
+									<td>
+										{{categoryId}}
+									</td>
+									<td>
+										{{weight}}
 									</td>
 									<td>
 										<div class="btn-group">
@@ -76,6 +84,7 @@
 				<div class="row">
 					<div class="col-md-offset-1 col-md-10">
 						<ul class="pager">
+							<li class="previous"><a href="#">&larr; Previous</a></li>
 							<li class="next"><a href="#">Next &rarr;</a></li>
 						</ul>
 					</div>
@@ -86,3 +95,6 @@
 		<!-- /.portlet -->
 	</div>
 </div>
+<!-- /#content-container -->
+<script src="/javascripts/dashboard/management/tag/mgr-tags.js"></script>
+<script src="/libs/jquery-validation/lib/jquery.mockjax.js"></script>
