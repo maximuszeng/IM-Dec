@@ -10,7 +10,6 @@
 			<div class="col-md-1">
 				<button type="button" id="newStaff"
 					class="btn btn-primary form-control">New</button>
-					data-toggle="modal" data-target="#newAppModal">New</button>
 			</div>
 			<div class="col-md-1">
 				<button type="button" id="editMode"
@@ -45,6 +44,29 @@
 								</tr>
 							</thead>
 							<tbody>
+								{{#contents}}
+								<tr>
+									<td>{{appKey}}</td>
+									<td><a href="#" data-pk="2" class="cell-email">{{domain}}</a><i class="fa fa-flag fa-2x pull-left"></i></td>
+									<td>{{name}}</td>
+									<td>{{appType}}</td>
+									<td>{{createTime}}</td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-success dropdown-toggle"
+												data-toggle="dropdown">
+												Action <span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Welcome Message</a></li>
+												<li><a href="#">Manage Staff</a></li>
+												<li class="divider"></li>
+												<li><a href="#">Delete</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								{{/contents}}
 							</tbody>
 							<tfoot>
 							</tfoot>
