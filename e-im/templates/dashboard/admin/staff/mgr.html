@@ -1,5 +1,5 @@
 <div id="content">
-	<input type="hidden" value="{{uid}}" name="uid" id="uid"/>
+	<input type="hidden" value="{{uid}}" name="uid" />
 	<div id="content-header">
 		<h1>Staff Management</h1>
 	</div>
@@ -8,14 +8,15 @@
 	<div id="content-container">
 		<div class="row">
 			<div class="col-md-1">
-				<button id="newStaff" class="btn btn-primary form-control"
-					type="button" data-toggle="modal" data-target="#newStaffModal">New</button>
+				<button type="button" id="newStaff"
+					class="btn btn-primary form-control">New</button>
 			</div>
 			<div class="col-md-1">
 				<button type="button" id="editMode"
 					class="btn btn-primary form-control">Edit Mode</button>
 				<button id="editingMode" class="btn btn-success hidden">
-					<i class='fa fa-spinner fa-spin fa-large'></i><span>Editing</span>
+					<i class='fa fa-spinner fa-spin fa-large'></i><span>Editing<small>(auto
+							save)</small></span>
 				</button>
 			</div>
 		</div>
@@ -44,7 +45,57 @@
 								</tr>
 							</thead>
 							<tbody>
-								
+								{{#contents}}
+								<tr>
+									<td>
+										<input type="hidden" value="{{suid}}" name="pk" />
+										<a href="#" data-pk="2" class="cell-name">{{userName}}</a>
+									</td>
+									<td><a href="#" data-pk="2" class="cell-email">{{email}}</a></td>
+									<td>
+										<input type="hidden" value="{{canServe}}" name="canServe" />
+										<div id="canServe" class="make-switch" data-on="primary"
+											data-off="info" data-on-label="YES" data-off-label="NO">
+											<input id="canServeInput" name="css" type="checkbox" checked />
+										</div>
+									</td>
+									<td>
+										<input type="hidden" value="{{serviceMode}}" name="serviceMode" />
+										<div id="OTMMode" class="make-switch" data-on="primary"
+											data-on-label="OPEN" data-off-label="CLOSED" data-off="info">
+											<input type="checkbox" name="sms" checked id="OTMModeInput" />
+										</div>
+									</td>
+									<td>
+										<input type="hidden" value="{{serviceConcurrentLimited}}" name="serviceConcurrentLimited" />
+										<select
+											id="OTMConcurrentLimited" class="selectpicker" name="scl"
+											data-style="btn-info">
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3" selected>3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+										</select>
+									</td>
+									<input type="hidden" value="{{createDate}}" name="createDate" />
+									<td>{{createDate}}</td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-success dropdown-toggle"
+												data-toggle="dropdown">
+												Action <span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Change Password</a></li>
+												<li><a href="#">Manage App</a></li>
+												<li class="divider"></li>
+												<li><a href="#">Delete</a></li>
+											</ul>
+										</div>
+									</td>
+								</tr>
+								{{/contents}}
 							</tbody>
 							<tfoot>
 							</tfoot>
@@ -67,8 +118,4 @@
 </div>
 <!-- /#content-container -->
 <script src="/javascripts/dashboard/admin/mgr-staff.js"></script>
-<script src="/templates.js"></script>
-
 <script src="/libs/jquery-validation/lib/jquery.mockjax.js"></script>
-
-{{> newStaffModal}}
