@@ -1,4 +1,5 @@
 <div id="sidebar-wrapper" class="collapse sidebar-collapse">
+
 	<div id="search">
 		<form>
 			<input class="form-control input-sm" type="text" name="search"
@@ -13,17 +14,21 @@
 
 		<ul id="main-nav" class="open-active">
 
-			<li class="active"><a href="/admin/dashboard"> <i
+			<li class="active"><a href="/dashboard-admin"> <i
 					class="fa fa-dashboard"></i>Dashboard
 			</a></li>
 
-			<li class="dropdown"><a href="javascript:;"> <i
-					class="fa fa-file-text"></i>Staffs<span class="caret"></span>
-			</a>
+			<li class="dropdown">
+				<a href="javascript:;"> 
+					<i class="fa fa-file-text"></i>Staffs<span class="caret"></span>
+				</a>
 
 				<ul class="sub-nav">
+					<li><a href="/admin/staff/new"> <i class="fa fa-user"></i>
+							New
+					</a></li>
 					<li><a href="/admin/staff/mgr"> <i class="fa fa-money"></i>
-							Management
+							Maintain
 					</a></li>
 					<li><a href="./pricing"> <i class="fa fa-dollar"></i>
 							Performance
@@ -31,17 +36,29 @@
 					<li><a href="./support"> <i class="fa fa-question"></i>
 							Help
 					</a></li>
+					<li><a href="./calendar"> <i class="fa fa-calendar"></i>
+							Extend
+					</a></li>
 				</ul></li>
 
 			<li class="dropdown"><a href="javascript:;"> <i
 					class="fa fa-tasks"></i>Applications<span class="caret"></span>
 			</a>
 				<ul class="sub-nav">
-					<li><a href="/admin/app/mgr"><i class="fa fa-magic"></i>Management</a>
-					</li>
-					<li><a href="./pricing"> <i class="fa fa-dollar"></i>Performance
+					<li><a href="/admin/app/new"> <i class="fa fa-location-arrow"></i>
+							New
 					</a></li>
-					<li><a href="./support"> <i class="fa fa-question"></i>Help
+					<li><a href="/admin/app/mgr"> <i class="fa fa-magic"></i>
+							Maintain
+					</a></li>
+					<li><a href="./pricing"> <i class="fa fa-dollar"></i>
+							Performance
+					</a></li>
+					<li><a href="./support"> <i class="fa fa-question"></i>
+							Help
+					</a></li>
+					<li><a href="./validation"> <i class="fa fa-check"></i>
+							Extend
 					</a></li>
 				</ul></li>
 
