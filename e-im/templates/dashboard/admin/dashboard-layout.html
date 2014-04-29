@@ -23,7 +23,6 @@
 <link rel="stylesheet" href="/stylesheets/dashboard/custom.css" type="text/css" />
 
 {{> script}}
-
 <script src="/libs/select2/select2.min.js"></script>
 <script src="/libs/fullcalendar/fullcalendar.min.js"></script>
 <script src="/libs/raphael/raphael-min.js"></script>
@@ -32,7 +31,7 @@
 <script src="/libs/howler/howler.min.js"></script>
 <script src="/libs/DataTables/media/js/jquery.dataTables.js"></script>
 <script src="/libs/underscore/underscore-min.js"></script>
-<script src="/libs/bootstrap-switch/build/js/bootstrap-switch.min.js"></script>
+<script src="/libs/bootstrap-switch/static/js/bootstrap-switch.min.js"></script>
 <script src="/libs/bootstrap-select/bootstrap-select.min.js"></script>
 <script src="/libs/ckeditor/ckeditor.js"></script>
 <script src="/libs/flot/jquery.flot.js"></script>
@@ -45,19 +44,21 @@
 <script src="/libs/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
 <script src="/libs/bootstrap-tagsinput/lib/typeahead.min.js"></script>
 <script src="/libs/bootstrap-checkbox/js/bootstrap-checkbox.js"></script>
-<script src=/libs/jquery-icheck/icheck.min.js></script>
+<script src=/libs/jquery-icheck/jquery.icheck.min.js></script>
 <script src="/javascripts/jquery/jquery.tableCheckable.js"></script>
 <script src="/javascripts/dashboard/App.js"></script>
+
 <script src="/javascripts/dashboard/charts/area.js"></script>
 <script src="/javascripts/dashboard/charts/donut.js"></script>
+
 <script src="/javascripts/dashboard/calendar.js"></script>
 <script src="/javascripts/dashboard/dashboard.js"></script>
 <script src="/javascripts/dashboard/dashboard-common.js"></script>
 <script src="/javascripts/dashboard/validator-common.js"></script>
 <script src="/libs/jquery.serializeJSON/jquery.serializeJSON.min.js"></script>
 <script src="/libs/typeahead.js/test/vendor/hogan-2.0.0.js"></script>
-<script src="/libs/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-<script src="/libs/jquery-dateFormat/dist/jquery-dateFormat.min.js"></script>
+<script
+	src="/libs/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 
 {{> customscripts}}
 
@@ -65,9 +66,8 @@
 .bootstrap-tagsinput {
 	width: 100%;
 }
-
-.fa-flag {
-	color: red;
+.fa-flag{
+    color: red;
 }
 
 .twitter-typeahead .tt-query,.twitter-typeahead .tt-hint {
@@ -134,19 +134,22 @@
 }
 
 .tt-suggestion.tt-is-under-cursor a {
-	color: #fff;
+  color: #fff;
 }
 
 .tt-suggestion p {
-	margin: 0;
+  margin: 0;
 }
+
 </style>
 </head>
 
 <body>
 
-	<div id="wrapper">
-		{{> header}} {{> topbar}} {{> sidebar}} {{> content}}
+	<div id="wrapper">{{> header}} {{> topbar}} {{> sidebar}} {{>
+		content}}</div>
+
+	{{> footer}}
 
 	<div class="modal col-md-4 col-md-offset-4" id="pleaseWaitDialog"
 		data-backdrop="static" data-keyboard="false">
