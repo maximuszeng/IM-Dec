@@ -31,4 +31,4 @@ parseUri.options = {
 
 exports.parseUri = function(uri) {
 	return parseUri(uri);
-};
+}
