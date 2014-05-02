@@ -37,84 +37,6 @@ app.use(express.session({
 	secret : '1234567890QWERTY'
 }));
 
-//configure upload middleware
-upload.configure({
-	 tmpDir: __dirname + '/tmp',
-	 maxPostSize: 100000000, // 100MB
-	 minFileSize: 1,
-	 maxFileSize: 100000000, // 100MB
-	 acceptFileTypes: /.+/i,
-	 imageTypes: /\.(gif|jpe?g|png)$/i,
-	 imageVersions: {
-		 thumbnail: {
-	         width: 64,
-	         height: 64
-	     },
-	     3232: {
-	         width: 32,
-	         height: 32
-	     }
-	 }
-});
-
-app.use(function (req, res, next) {
-	var url = req.originalUrl;
-	if (url.indexOf('/upload') === 0 && req.session.uid) {
-		var path = url.substring(7);
-		var lstSlash = path.lastIndexOf('/');
-		var subFolder = path;
-		if (lstSlash == 0 && path.indexOf('.') != -1) {
-			subFolder = '/';
-		} else if (lstSlash > 0 && path.indexOf('.') != -1) {
-			subFolder = path.substring(0, path.lastIndexOf('/'));
-		}
-		console.log('subFolder='+subFolder);
-		upload.fileHandler({
-		     uploadDir: function () {
-		         return __dirname + '/public/contents/'  + req.session.uid + subFolder;
-		     },
-		     uploadUrl: function () {
-		         return '/contents/' + req.session.uid + subFolder;
-		     }
-		 })(req, res, next);
-	} else {
-		next();
-	}
-});
-
-app.use(function(req, res, next) {
-	var url = req.originalUrl;
-	if (url.indexOf('/fm/newfolder') === 0 && req.session.uid) {
-		var newFolderPath = url.substring(13);
-		upload.fileManagerext({
-		     uploadDir: function () {
-		         return __dirname + '/public/contents/'  + req.session.uid;
-		     }
-		 })('NF', {newFolderPath:newFolderPath}, req, res, next);
-	} else {
-		next();
-	}
-});
-
-// events
-upload.on('begin', function(fileInfo) {
-	//console.log(fileInfo);
-});
-upload.on('abort', function(fileInfo) {
-	//console.log(fileInfo);
-});
-upload.on('end', function(fileInfo) {
-	//console.log(fileInfo);
-});
-upload.on('delete', function(fileInfo) {
-	//console.log(fileInfo);
-});
-upload.on('error', function(e) {
-	//console.log(e.message);
-});
-
-app.use(express.bodyParser());
-
 i18n.configure({
 	locales : [ 'zh_CN', 'en-US' ],
 	directory : __dirname + '/locales',
@@ -149,23 +71,6 @@ app.use(function(req, res, next) {
 	    }
 	});
     next();
-});
-
-function readSharedTemplatesMiddleware(req, res, next) {
-	if (!app.sharedTemplates || app.settings.env === "development") {
-		SharedTemplateCompiler.readSharedTemplates(app);
-	}
-	next();
-}
-
-SharedTemplateCompiler.readSharedTemplates(app);
-
-app.get("/templates.js", readSharedTemplatesMiddleware, function(req, res, next) {
-	var content = SharedTemplateCompiler.sharedTemplateTemplate.render({
-		templates : app.sharedTemplates
-	});
-	res.contentType("application/javascript");
-	res.send(content);
 });
 
 // PortalController start
