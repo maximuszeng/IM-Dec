@@ -1,8 +1,5 @@
 var express = require("express");
 var config = require('./config')();
-var SharedTemplateCompiler = require('./utils/SharedTemplateCompiler');
-var upload = require('./eim-file-upload-middleware');
-
 var http = require("http");
 var app = express();
 var RedisStore = require('connect-redis')(express);
@@ -26,6 +23,7 @@ app.set('views', __dirname + '/templates');
 app.enable('trust proxy');
 app.use(express.favicon());
 app.use(express.logger('dev'));
+app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('OCS'));
 app.use(express.session({
@@ -116,13 +114,13 @@ app.get('/chat', ChatWidgetController.chat);
 // AdminDashboardController start
 app.get('/admin/dashboard', AdminDashboardController.dashboard);
 
+app.get('/admin/staff/new', AdminDashboardController.newStaffGet);
+
 app.get('/admin/staff/mgr', AdminDashboardController.mgrStaffGet);
 
+app.get('/admin/app/new', AdminDashboardController.newAppGet);
+
 app.get('/admin/app/mgr', AdminDashboardController.mgrAppGet);
-
-app.get('/admin/extends', AdminDashboardController.extendsGet);
-
-app.get('/admin/tools/filemgr', AdminDashboardController.fileManagerGet);
 
 // AdminDashboardController end
 
