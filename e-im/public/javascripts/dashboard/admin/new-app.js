@@ -30,32 +30,40 @@ $(document).ready(function() {
 			$(value).removeClass("has-success");
 		});
 	});
-
+	
 	// Adding custom typeahead support using http://twitter.github.io/typeahead.js
-	var elt = $('.apptag > > input');
+	var elt = $('.apptag > input');
 	elt.tagsinput({
-		itemValue : 'value',
-		itemText : 'text'
+	  itemValue: 'value',
+	  itemText: 'text'
 	});
-
-	//	elt.tagsinput('add', { "value": 1 , "text": "Amsterdam"   , "continent": "Europe"    });
-
+	
+//	elt.tagsinput('add', { "value": 1 , "text": "Amsterdam"   , "continent": "Europe"    });
+//	elt.tagsinput('add', { "value": 4 , "text": "Washington"  , "continent": "America"   });
+//	elt.tagsinput('add', { "value": 7 , "text": "Sydney"      , "continent": "Australia" });
+//	elt.tagsinput('add', { "value": 10, "text": "Beijing"     , "continent": "Asia"      });
+//	elt.tagsinput('add', { "value": 13, "text": "Cairo"       , "continent": "Africa"    });
+	
 	elt.tagsinput('input').typeahead({
-		valueKey : 'text',
-		prefetch : '/javascripts/dashboard/admin/cities.json',
-		template : '<p>{{text}}</p>',
-		engine : Hogan
+	  valueKey: 'text',
+	  prefetch: '/javascripts/dashboard/admin/cities.json',
+	  template: '<p>{{text}}</p>',                                       
+	  engine: Hogan
 
-	}).bind('typeahead:selected', $.proxy(function(obj, datum) {
+	}).bind('typeahead:selected', $.proxy(function (obj, datum) {  
 		this.tagsinput('add', datum);
 		this.tagsinput('input').typeahead('setQuery', '');
 	}, elt));
-
-	$(_SAVE).click(function(event) {
-		if ($(_FORM).valid()) {
-			 $("#pleaseWaitDialog").modal('show');
+	
+	$("#saveNewApp").click(function(event) {
+		$("#newStaffForm").submit(function(e) {
+			e.preventDefault();
+			 var $form = $(this);
+			 var $inputs = $form.find("input, select, button, textarea");
 			 
-			 var serializedData = $(_FORM).serializeJSON();
+			 var serializedData = $inputs.serialize();
+			 
+			 $inputs.prop("disabled", true);
 			 
 			 var data = JSON.stringify(serializedData);
 			 var request = $.ajax({
