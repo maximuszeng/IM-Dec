@@ -1,4 +1,4 @@
-			request.fail(function(jqXHR, textStatus, errorThrown) {
+$(document).ready(function() {
 	$('#staffListTable .cell-name').editable({
 		type : 'text',
 		name : 'username',
@@ -10,50 +10,38 @@
 		    }
 		}
 	});
-
+	
 	$('#staffListTable .cell-email').editable({
 		type : 'text',
 		name : 'username',
 		url : '/post',
 		title : 'Enter Email'
 	});
-	
-	setInEditingMode(false);
-}
 
-function setInEditingMode(editingMode) {
-	$('#newStaff').prop('disabled', editingMode);
-	if (editingMode) {
-		$('#editMode').addClass("hidden");
-		$('#editingMode').removeClass("hidden");
-	} else {
-		$('#editMode').removeClass("hidden");
-		$('#editingMode').addClass("hidden");
-	}
-	
-	$("#staffListTable").find(".make-switch").bootstrapSwitch('setActive', editingMode);
-	$("#staffListTable").find(".selectpicker").prop('disabled', !editingMode);
-	$("#staffListTable").find(".selectpicker").selectpicker('refresh');
-	
-	$('#staffListTable .editable').editable('toggleDisabled');
-}
-
-function bindComponentsEvents(){
-	$('#newStaff').click(function() {
-		
+	//ajax emulation
+	$.mockjax({
+		url : '/post',
+		responseTime : 200
 	});
+
+	
 	
 	$('#editMode,#editingMode').click(function() {
 		var inEditing = $('#newStaff').prop('disabled');
 		if (inEditing) {
-			setInEditingMode(false);
+			$('#newStaff').prop('disabled', false);
+			$('#editingMode').addClass("hidden");
+			$('#editMode').removeClass("hidden");
+			$(".make-switch").bootstrapSwitch('setActive', false);
+			$(".selectpicker").prop('disabled', true);
+			$(".selectpicker").selectpicker('refresh');
 		} else {
-			setInEditingMode(true);
+			$('#newStaff').prop('disabled', true);
+			$('#editMode').addClass("hidden");
+			$('#editingMode').removeClass("hidden");
+			$(".make-switch").bootstrapSwitch('setActive', true);
 		}
 	});
 }
 
-$(document).ready(function() {
-	loadStaffFromWebAPI();
-	bindComponentsEvents();
 });
