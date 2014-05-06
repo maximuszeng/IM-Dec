@@ -40,8 +40,17 @@ $(document).ready(function() {
 			$('#editMode').addClass("hidden");
 			$('#editingMode').removeClass("hidden");
 			$(".make-switch").bootstrapSwitch('setActive', true);
+			$(".selectpicker").prop('disabled', false);
+			$(".selectpicker").selectpicker('refresh');
 		}
+		
+		$('#staffListTable .editable').editable('toggleDisabled');
 	});
-}
+	
+	$(".selectpicker").prop('disabled', true);
+	$(".selectpicker").selectpicker('refresh');
+	
+	$(".make-switch").bootstrapSwitch('setActive', false);
+	$('#staffListTable .editable').editable('toggleDisabled');
 
 });

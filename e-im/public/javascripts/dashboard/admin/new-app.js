@@ -1,37 +1,26 @@
-var editor = CKEDITOR.replace("welcomeMessage", {
-	customConfig : '/javascripts/dashboard/admin/ckeditor-wm-config.js'
+window.CKEDITOR_BASEPATH =  "http://mydomain.com/new";
+
+CKEDITOR.replace("welcomeMsg",{
+	customConfig: '/javascripts/dashboard/admin/ckeditor-wm-config.js'
 });
 
 $(document).ready(function() {
 	var _FORM = "#newAppForm";
 	var _RESET = "#resetNewApp";
 	var _SAVE = "#saveNewApp";
-
+	
 	var v = $(_FORM).validate();
-
+	
 	function resetElement(value) {
 		$(value).val("");
 	}
-
-	$('#newAppModal').on('hidden.bs.modal', function() {
-
-	});
-
-	$('#newAppModal').on('shown.bs.modal', function() {
-		$("#newAppModal").scrollTop(0);
-		$("#newAppAppName").focus();
-		resetForm();
-	});
-
-	function resetForm() {
+	
+	$(_RESET).click(function(event) {
 		v.resetForm();
 		$(_FORM).find("input[type='text']").each(function(index, value) {
 			resetElement(value);
-		});
+	    });
 		$(_FORM).find("input[type='password']").each(function(index, value) {
-			resetElement(value);
-		});
-		$(_FORM).find("textarea").each(function(index, value) {
 			resetElement(value);
 		});
 		$(_FORM).find(".has-error").each(function(index, value) {
@@ -40,11 +29,6 @@ $(document).ready(function() {
 		$(_FORM).find(".has-success").each(function(index, value) {
 			$(value).removeClass("has-success");
 		});
-		editor.setData('');
-	}
-
-	$(_RESET).click(function(event) {
-		resetForm();
 	});
 
 	// Adding custom typeahead support using http://twitter.github.io/typeahead.js
