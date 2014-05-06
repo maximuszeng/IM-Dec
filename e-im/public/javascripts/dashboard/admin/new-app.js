@@ -65,37 +65,38 @@ $(document).ready(function() {
 			 
 			 $inputs.prop("disabled", true);
 			 
-			 var data = JSON.stringify(serializedData);
-			 var request = $.ajax({
-			        url: "http://localhost:8080/webapi/api/app/regist",
-			        contentType: "application/json; charset=utf-8" ,
-			        crossDomain: true,
-			        dataType: "json",
+			 /*request = $.ajax({
+			        url: "/signinpost",
 			        type: "post",
-			        data: JSON.stringify(serializedData)
+			        data: serializedData
 			 });
 			 
 			 request.done(function (response, textStatus, jqXHR){
-				 if(response.status == 'Y') {
-					 alert("success");
-					 resetForm();
+			     // log a message to the console
+				 if ($("#redirect").val() && (response == 'A' || response == 'Y')) {
+					 window.location.href = $("#redirect").val();
+					 return;
+				 }
+				 if (response == 'A') {
+					window.location.href = "/admin/dashboard";
+				 } if(response == 'Y') {
+					 window.location.href = "/staff/dashboard";
 				 } else {
-					 alert(response.errorMessage);
+					 $("#signinResult").html(response);
 				 }
 			 });
 
 			 // callback handler that will be called on failure
 			 request.fail(function (jqXHR, textStatus, errorThrown){
-			     alert("The following error occured: "+ textStatus + errorThrown);
+			      alert("The following error occured: "+ textStatus, errorThrown);
 			 });
 
 			 // callback handler that will be called regardless
 			 // if the request failed or succeeded
 			 request.always(function () {
-				 $("#pleaseWaitDialog").modal('hide');
-			 });
-		
-		}
+			     $inputs.prop("disabled", false);
+			 });*/
+		});
 	});
 
 });
