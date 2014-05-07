@@ -9,17 +9,7 @@ $(document).ready(function() {
 		$(value).val("");
 	}
 	
-	$('#newStaffModal').on('hidden.bs.modal', function () {
-		
-	});
-	
-	$('#newStaffModal').on('shown.bs.modal', function () {
-		$("#newStaffModal").scrollTop(0);
-		$("#newStaffUserName").focus();
-		resetForm();
-	});
-	
-	function resetForm() {
+	$(_RESET).click(function(event) {
 		v.resetForm();
 		$(_FORM).find("input[type='text']").each(function(index, value) {
 			resetElement(value);
@@ -33,17 +23,11 @@ $(document).ready(function() {
 		$(_FORM).find(".has-success").each(function(index, value) {
 			$(value).removeClass("has-success");
 		});
-		$('#newStaffCanServe').bootstrapSwitch('setState', true); 
-		$('#newStaffOTMMode').bootstrapSwitch('setState', true); 
-	}
-	
-	$(_RESET).click(function(event) {
-		resetForm();
 	});
 	
 	$(_SAVE).click(function(event) {
 		if ($(_FORM).valid()) {
-			 $("#pleaseWaitDialog").modal('show');
+			 //$("#pleaseWaitDialog").modal('show');
 			 
 			 var serializedData = $(_FORM).serializeJSON();
 			 if (serializedData.canServe && serializedData.canServe == 'on') {
