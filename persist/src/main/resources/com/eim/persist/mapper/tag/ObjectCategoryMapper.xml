@@ -7,15 +7,12 @@
 	<cache />
 
 	<resultMap id="objectCategoryResultMap" type="ObjectCategoryPO">
-		<result property="id" column="ID" />
-		<result property="name" column="NAME" />
-		<result property="description" column="DESCRIPTION" />
-		<result property="createDate" column="CREATE_DATE" />
-		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" />
+		<result property="categoryId" column="OBJECT_CATEGORY_ID" />
+		<result property="name" column="OBJCT_NAME" />
 	</resultMap>
 
 	<select id="load" parameterType="long" resultMap="objectCategoryResultMap">
-		SELECT * FROM TAG_OBJECT_CATEGORY T WHERE T.ID = #{id}
+		SELECT * FROM TAG_OBJECT_CATEGORY T WHERE T.OBJECT_CATEGORY_ID = #{categoryId}
 	</select>
 
 	<select id="loadAll" resultMap="objectCategoryResultMap">
@@ -24,18 +21,16 @@
 
 	<update id="update" parameterType="ObjectCategoryPO">
 		UPDATE TAG_OBJECT_CATEGORY SET
-		NAME = #{name},
-		DESCRIPTION = #{description},
-		LAST_UPDATE_DATE = #{lastUpdateDate}
-		WHERE ID = #{categoryId}
+		OBJCT_NAME = #{name}
+		WHERE OBJECT_CATEGORY_ID = #{categoryId}
 	</update>
 
 	<insert id="insert" parameterType="ObjectCategoryPO">
-		INSERT INTO TAG_OBJECT_CATEGORY (ID, NAME, DESCRIPTION, CREATE_DATE) VALUES (#{id}, #{name}, #{description}, #{createDate})
+		INSERT INTO TAG_OBJECT_CATEGORY (OBJECT_CATEGORY_ID, OBJCT_NAME) VALUES (#{categoryId}, #{name})
 	</insert>
 
 	<delete id="delete" parameterType="Long">
-		DELETE FROM TAG_OBJECT_CATEGORY WHERE ID= #{id}
+		DELETE FROM TAG_OBJECT_CATEGORY WHERE OBJECT_CATEGORY_ID= #{categoryId}
 	</delete>
 
 </mapper>

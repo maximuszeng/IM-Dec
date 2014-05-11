@@ -7,17 +7,15 @@
 	<cache />
 	
 	<resultMap id="tagCategoryResultMap" type="TagCategoryPO">
-		<result property="id" column="ID" />
-		<result property="name" column="NAME" />
-		<result property="description" column="DESCRIPTION" />
+		<result property="id" column="CATEGORY_ID" />
+		<result property="name" column="CATEGORY_NAME" />
+		<result property="desc" column="CATEGORY_DESC" />
 		<result property="locale" column="LOCALE"
 			typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
-		<result property="createDate" column="CREATE_DATE" />
-		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" />	
 	</resultMap>
 
 	<select id="load" parameterType="long" resultMap="tagCategoryResultMap">
-		SELECT * FROM TAG_TAG_CATEGORY T WHERE T.ID = #{id}
+		SELECT * FROM TAG_TAG_CATEGORY T WHERE T.CATEGORY_ID = #{id}
 	</select>
 
 	<select id="loadAll" resultMap="tagCategoryResultMap">
@@ -26,27 +24,26 @@
 
 	<update id="update" parameterType="TagCategoryPO">
 		UPDATE TAG_TAG_CATEGORY SET
-		NAME = #{name},
-		DESCRIPTION = #{description},
-		LOCALE = #{locale.id},
-		LAST_UPDATE_DATE = #{lastUpdateDate}
-		WHERE ID = #{id}
+		CATEGORY_NAME = #{name},
+		CATEGORY_DESC = #{desc},
+		LOCALE = #{locale.id}
+		WHERE CATEGORY_ID = #{id}
 	</update>
 
 	<insert id="insert" parameterType="TagCategoryPO">
-		INSERT INTO TAG_TAG_CATEGORY (ID, NAME, DESCRIPTION, LOCALE, CREATE_DATE)
-		VALUES (#{id}, #{name}, #{description},  #{locale.id}, #{createDate})
+		INSERT INTO TAG_TAG_CATEGORY (CATEGORY_ID, CATEGORY_NAME, CATEGORY_DESC, LOCALE)
+		VALUES (#{id}, #{name}, #{desc},  #{locale.id})
 	</insert>
 
 	<delete id="delete" parameterType="Long">
-		DELETE FROM TAG_TAG_CATEGORY WHERE ID=#{id}
+		DELETE FROM TAG_TAG_CATEGORY WHERE CATEGORY_ID=#{id}
 	</delete>
 
 	<insert id="batchInsert" parameterType="List">
-		INSERT INTO TAG_TAG_CATEGORY (ID, NAME, DESCRIPTION, LOCALE, CREATE_DATE) VALUES
+		INSERT INTO TAG_TAG_CATEGORY (CATEGORY_ID, CATEGORY_NAME, CATEGORY_DESC, LOCALE) VALUES
 		<foreach collection="entities" item="item" index="index"
 			separator=",">
-			(#{item.id}, #{item.name}, #{item.description}, #{item.locale.id}, #{item.createDate})
+			(#{item.id}, #{item.name}, #{item.desc}, #{item.locale.id})
 		</foreach>
 	</insert>
 

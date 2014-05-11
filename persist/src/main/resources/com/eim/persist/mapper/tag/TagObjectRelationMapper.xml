@@ -11,7 +11,6 @@
 		<result property="objectId" column="OBJECT_ID" />
 		<result property="objectCategoryId" column="OBJECT_CATEGORY_ID" />
 		<result property="weight" column="WEIGHT" />
-		<result property="createDate" column="CREATE_DATE" />
 	</resultMap>
 
 	<select id="load" parameterType="long" resultMap="tagObjectRelationResultMap">
@@ -40,15 +39,15 @@
 	</update>
 
 	<insert id="insert" parameterType="TagObjectRelationPO">
-		INSERT INTO TAG_TAG_OBJECT_RELATION (TAG_ID, OBJECT_ID, OBJECT_CATEGORY_ID, WEIGHT, CREATE_DATE)
-		VALUES (#{tagId}, #{objectId}, #{objectCategoryId}, #{weight}, #{createDate})
+		INSERT INTO TAG_TAG_OBJECT_RELATION (TAG_ID, OBJECT_ID, OBJECT_CATEGORY_ID, WEIGHT)
+		VALUES (#{tagId}, #{objectId}, #{objectCategoryId}, #{weight})
 	</insert>
 
 	<insert id="batchInsert" parameterType="List">
-		INSERT INTO TAG_TAG_OBJECT_RELATION (TAG_ID, OBJECT_ID, OBJECT_CATEGORY_ID, WEIGHT, CREATE_DATE) VALUES
+		INSERT INTO TAG_TAG_OBJECT_RELATION (TAG_ID, OBJECT_ID, OBJECT_CATEGORY_ID, WEIGHT) VALUES
 		<foreach collection="entities" item="item" index="index"
 			separator=",">
-			(#{item.tagId}, #{item.objectId}, #{item.objectCategoryId}, #{item.weight}, #{item.createDate})
+			(#{item.tagId}, #{item.objectId}, #{item.objectCategoryId}, #{item.weight})
 		</foreach>
 	</insert>
 	
