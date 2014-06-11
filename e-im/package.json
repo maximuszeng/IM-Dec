@@ -18,11 +18,9 @@
     "connect-redis": "*",
     "crypto":"*",
     "async":"*",
-    "swig": "1.0.x",
-    "imagemagick": "0.1.x",
-    "json-query" :"*"
+    "bower":"*"
   },
-  "devDependencies": { "mocha": "*", "should" : "*","chai":"*","sinon":"*", "redis-commander":"*" },
+  "devDependencies": { "mocha": "*", "should" : "*","chai":"*","sinon":"*" },
   "contributors": [{
       "name": "Maximus Zeng",
       "email": "yanglei2010@gmail.com"
